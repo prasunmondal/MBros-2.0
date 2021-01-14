@@ -25,14 +25,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ef76a4c-2e09-4568-92d7-5a8f1599a0fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/AddNewOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/DatabaseStrings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/FetchAllCustomers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/FetchAllOrders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/RegisterNewCustomer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/ExecutePostCalls.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/FetchAllFromDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/FetchFromDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/InsertDataToDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/InsertUniqueDataToDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/UpdateDataInDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/Files/FileOperations.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/Files/IOObjectToFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/Utils/DataParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/Utils/StringConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/AddOrder.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/RegisterCustomer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/ViewCustomers.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/ViewOrders.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/date/DateUtls.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/models/Customer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/models/CustomerList.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/models/Order.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_order.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register_customer.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_customers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_orders.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +88,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/values" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/values" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/values-night" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -148,5 +187,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="435" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610605069033">
+      <screen x="0" y="23" width="1394" height="877" />
+    </state>
+    <state x="435" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1394.877@0.23.1394.877" timestamp="1610605069033" />
+    <state x="389" y="216" width="630" height="576" key="find.popup" timestamp="1610604913099">
+      <screen x="0" y="23" width="1394" height="877" />
+    </state>
+    <state x="389" y="216" width="630" height="576" key="find.popup/0.23.1394.877@0.23.1394.877" timestamp="1610604913099" />
+    <state x="362" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1610604720535">
+      <screen x="0" y="23" width="1394" height="877" />
+    </state>
+    <state x="362" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1394.877@0.23.1394.877" timestamp="1610604720535" />
   </component>
 </project>

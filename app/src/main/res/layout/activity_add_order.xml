@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AddOrder">
+
+    <EditText
+        android:id="@+id/add_order_customerId"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/add_order_customerName"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_order_customerId" />
+
+    <EditText
+        android:id="@+id/add_order_pcs"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_order_customerName" />
+
+    <EditText
+        android:id="@+id/add_order_kilos"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_order_pcs" />
+
+    <EditText
+        android:id="@+id/add_order_pricePerKilo"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_order_kilos" />
+
+    <EditText
+        android:id="@+id/add_order_previousDue"
+        android:layout_width="325dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_order_pricePerKilo" />
+
+    <Button
+        android:id="@+id/add_order_saveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Button"
+        android:onClick="onClickPlaceOrderButton"
+        app:layout_constraintEnd_toEndOf="@+id/add_order_previousDue"
+        app:layout_constraintStart_toStartOf="@+id/add_order_previousDue"
+        app:layout_constraintTop_toBottomOf="@+id/add_order_previousDue" />
+</androidx.constraintlayout.widget.ConstraintLayout>
