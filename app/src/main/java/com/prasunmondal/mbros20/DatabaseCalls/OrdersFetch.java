@@ -6,11 +6,11 @@ import com.prasunmondal.mbros20.models.Order;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class FetchAllOrders {
+public class OrdersFetch {
     public static void execute(final Consumer<ArrayList<Order>> onCompletion) throws Exception
     {
         FetchAllFromDB sd = new FetchAllFromDB(
-                DatabaseStrings.TABNAME_ORDER,p1 -> parseAndExecute(p1, onCompletion));
+                DatabaseStrings.TABNAME_ORDER,jsonString -> parseAndExecute(jsonString, onCompletion));
         sd.execute();
     }
 

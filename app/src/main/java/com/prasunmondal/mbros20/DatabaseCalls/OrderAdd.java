@@ -6,7 +6,7 @@ import com.prasunmondal.mbros20.Utils.StringConstants;
 
 import java.util.function.Consumer;
 
-public class AddNewOrder
+public class OrderAdd
 {
     public void execute(Order order, Consumer<String> onCompletion) throws Exception
     {

@@ -25,44 +25,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ef76a4c-2e09-4568-92d7-5a8f1599a0fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/AddNewOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/DatabaseStrings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/FetchAllCustomers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/FetchAllOrders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/RegisterNewCustomer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/ExecutePostCalls.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/FetchAllFromDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/FetchFromDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/InsertDataToDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/InsertUniqueDataToDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/UpdateDataInDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/Files/FileOperations.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/Files/IOObjectToFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/Utils/DataParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/Utils/StringConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/AddOrder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/RegisterCustomer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/ViewCustomers.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/ViewOrders.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/date/DateUtls.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/models/Customer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/models/CustomerList.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/models/Order.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_order.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register_customer.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_customers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_orders.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/DeliveryRecordAdd.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/DeliveryRecordFetch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/models/Delivery.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/AddNewOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/OrderAdd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/DatabaseStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/DatabaseStrings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/FetchAllCustomers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/CustomersFetchAll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/FetchAllOrders.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/OrdersFetch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/RegisterNewCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseCalls/CustomerAddNew.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/UpdateDataInDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/DatabaseUtils/UpdateDataInDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/AddOrder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/AddOrder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/ViewCustomers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/ViewCustomers.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/ViewOrders.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/activities/ViewOrders.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/models/Customer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/prasunmondal/mbros20/models/Customer.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +52,13 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -91,6 +76,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/values" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.prasunmondal.mbros20.DatabaseCalls" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/values" />
       <recent name="$PROJECT_DIR$/app/src/main/res/values-night" />
@@ -189,17 +177,37 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="510" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1610605797056">
+      <screen x="0" y="23" width="1394" height="877" />
+    </state>
+    <state x="510" y="184" key="#com.intellij.ide.util.MemberChooser/0.23.1394.877@0.23.1394.877" timestamp="1610605797056" />
     <state x="435" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610605069033">
       <screen x="0" y="23" width="1394" height="877" />
     </state>
     <state x="435" y="215" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1394.877@0.23.1394.877" timestamp="1610605069033" />
-    <state x="389" y="216" width="630" height="576" key="find.popup" timestamp="1610604913099">
+    <state width="1352" height="231" key="GridCell.Tab.0.bottom" timestamp="1610605143285">
       <screen x="0" y="23" width="1394" height="877" />
     </state>
-    <state x="389" y="216" width="630" height="576" key="find.popup/0.23.1394.877@0.23.1394.877" timestamp="1610604913099" />
-    <state x="362" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1610604720535">
+    <state width="1352" height="231" key="GridCell.Tab.0.bottom/0.23.1394.877@0.23.1394.877" timestamp="1610605143285" />
+    <state width="1352" height="231" key="GridCell.Tab.0.center" timestamp="1610605143284">
       <screen x="0" y="23" width="1394" height="877" />
     </state>
-    <state x="362" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1394.877@0.23.1394.877" timestamp="1610604720535" />
+    <state width="1352" height="231" key="GridCell.Tab.0.center/0.23.1394.877@0.23.1394.877" timestamp="1610605143284" />
+    <state width="1352" height="231" key="GridCell.Tab.0.left" timestamp="1610605143284">
+      <screen x="0" y="23" width="1394" height="877" />
+    </state>
+    <state width="1352" height="231" key="GridCell.Tab.0.left/0.23.1394.877@0.23.1394.877" timestamp="1610605143284" />
+    <state width="1352" height="231" key="GridCell.Tab.0.right" timestamp="1610605143285">
+      <screen x="0" y="23" width="1394" height="877" />
+    </state>
+    <state width="1352" height="231" key="GridCell.Tab.0.right/0.23.1394.877@0.23.1394.877" timestamp="1610605143285" />
+    <state x="389" y="216" width="630" height="576" key="find.popup" timestamp="1610606487489">
+      <screen x="0" y="23" width="1394" height="877" />
+    </state>
+    <state x="389" y="216" width="630" height="576" key="find.popup/0.23.1394.877@0.23.1394.877" timestamp="1610606487489" />
+    <state x="362" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1610606209140">
+      <screen x="0" y="23" width="1394" height="877" />
+    </state>
+    <state x="362" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1394.877@0.23.1394.877" timestamp="1610606209140" />
   </component>
 </project>

@@ -6,11 +6,11 @@ import com.prasunmondal.mbros20.Utils.StringConstants;
 
 import java.util.function.Consumer;
 
-public class RegisterNewCustomer
+public class CustomerAddNew
 {
     Consumer<String> onCompletion;
 
-    public RegisterNewCustomer(Consumer<String> onCompletion) {
+    public CustomerAddNew(Consumer<String> onCompletion) {
         this.onCompletion = onCompletion;
     }
 

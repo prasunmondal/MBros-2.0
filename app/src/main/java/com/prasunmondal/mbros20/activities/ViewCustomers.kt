@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.prasunmondal.mbros20.DatabaseCalls.FetchAllCustomers
+import com.prasunmondal.mbros20.DatabaseCalls.CustomersFetchAll
 import com.prasunmondal.mbros20.models.Customer
 import com.prasunmondal.mbros20.models.CustomerList
 import com.prasunmondal.mbros20.R
@@ -45,6 +45,6 @@ class ViewCustomers : AppCompatActivity() {
     }
 
     fun onClickRefreshCustomerListButton(view: View) {
-        FetchAllCustomers.execute(Consumer { p1-> saveAndDisplayCustomers(p1)});
+        CustomersFetchAll.execute(Consumer { p1-> saveAndDisplayCustomers(p1)});
     }
 }

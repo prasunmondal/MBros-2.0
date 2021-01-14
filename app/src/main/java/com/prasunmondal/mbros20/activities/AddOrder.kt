@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
-import com.prasunmondal.mbros20.DatabaseCalls.AddNewOrder
+import com.prasunmondal.mbros20.DatabaseCalls.OrderAdd
 import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.date.DateUtls
 import com.prasunmondal.mbros20.models.Order
@@ -45,6 +45,6 @@ class AddOrder : AppCompatActivity() {
 
     fun onClickPlaceOrderButton(view: View) {
         var order = Order(getOrderId(), getCustomerId(), getCustomerName(), getPcs(), getKilos(), getPricePerKilo(), getPreviousDue());
-        AddNewOrder().execute(order, {})
+        OrderAdd().execute(order, {})
     }
 }

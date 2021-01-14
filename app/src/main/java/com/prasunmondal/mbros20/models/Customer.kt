@@ -1,7 +1,7 @@
 package com.prasunmondal.mbros20.models
 
 import com.google.gson.reflect.TypeToken
-import com.prasunmondal.mbros20.DatabaseCalls.RegisterNewCustomer
+import com.prasunmondal.mbros20.DatabaseCalls.CustomerAddNew
 import com.prasunmondal.mbros20.Utils.DataParser
 import java.io.Serializable
 import java.util.*
@@ -28,7 +28,7 @@ class Customer : Serializable {
     }
 
     fun addToDB() {
-        RegisterNewCustomer {}.execute(this)
+        CustomerAddNew {}.execute(this)
     }
 
     companion object {

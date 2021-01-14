@@ -6,11 +6,11 @@ import com.prasunmondal.mbros20.models.Customer;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class FetchAllCustomers {
+public class CustomersFetchAll {
     public static void execute(final Consumer<ArrayList<Customer>> onCompletion) throws Exception
     {
         FetchAllFromDB sd = new FetchAllFromDB(
-                DatabaseStrings.TABNAME_REGISTER_CUSTOMER,p1 -> parseAndExecute(p1, onCompletion));
+                DatabaseStrings.TABNAME_REGISTER_CUSTOMER,jsonString -> parseAndExecute(jsonString, onCompletion));
         sd.execute();
     }
 

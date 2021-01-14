@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.prasunmondal.mbros20.DatabaseCalls.FetchAllOrders
+import com.prasunmondal.mbros20.DatabaseCalls.OrdersFetch
 import com.prasunmondal.mbros20.models.Order
 import com.prasunmondal.mbros20.R
 import java.util.ArrayList
@@ -25,6 +25,6 @@ class ViewOrders : AppCompatActivity() {
     }
 
     fun onClickRefreshOrdersButton(view: View) {
-        FetchAllOrders.execute( { p1-> showCustomerData(p1)});
+        OrdersFetch.execute( { p1-> showCustomerData(p1)});
     }
 }
