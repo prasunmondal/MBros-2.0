@@ -9,8 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.database_calls.OrdersFetch
+import com.prasunmondal.mbros20.models.EnumLoggedInUser
 import com.prasunmondal.mbros20.models.Order
 import com.prasunmondal.mbros20.models.OrderList
+import com.prasunmondal.mbros20.session_data.SessionData
 import java.util.*
 
 class ViewOrders : AppCompatActivity() {
@@ -62,6 +64,17 @@ class ViewOrders : AppCompatActivity() {
     private fun onClickOrderEdit(order: Order) {
         // TODO: Go to edit order with the order details
         println("Go to edit order: $order")
-        goToAddOrderActivity(order)
+        if(SessionData.instance.loggedInUserRole == EnumLoggedInUser.MANAGER)
+            goToAddOrderActivity(order)
+        if(SessionData.instance.loggedInUserRole == EnumLoggedInUser.DELIVERY_MAN)
+            goToDenominationActivity(order)
+    }
+
+    private fun goToDenominationActivity(order: Order) {
+        val myIntent = Intent(this, DeliveryDenominations::class.java)
+            val bundle = Bundle()
+            bundle.putSerializable("order", order)
+            myIntent.putExtras(bundle)
+        this.startActivity(myIntent)
     }
 }

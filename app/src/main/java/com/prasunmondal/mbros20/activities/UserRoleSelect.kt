@@ -1,11 +1,10 @@
-package com.prasunmondal.mbros20
+package com.prasunmondal.mbros20.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.prasunmondal.mbros20.activities.ViewCustomers
-import com.prasunmondal.mbros20.activities.ViewOrders
+import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.models.EnumLoggedInUser
 import com.prasunmondal.mbros20.session_data.SessionData
 
@@ -24,7 +23,7 @@ class UserRoleSelect : AppCompatActivity() {
 
     fun onClickUserRoleSelectManager(view: View) {
         SessionData.instance.loggedInUserRole = EnumLoggedInUser.MANAGER
-        val myIntent = Intent(this, ViewCustomers::class.java)
+        val myIntent = Intent(this, SelectActivityManager::class.java)
         this.startActivity(myIntent)
         finish()
     }

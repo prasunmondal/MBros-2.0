@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserRoleSelect">
+        <activity android:name=".activities.SelectActivityManager"></activity>
+        <activity android:name=".activities.UserRoleSelect">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,12 +23,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.BillingActivity" />
-        <activity android:name=".activities.DeliveryDenominations">
-        </activity>
+        <activity android:name=".activities.DeliveryDenominations"></activity>
         <activity android:name=".activities.ViewOrders" />
         <activity android:name=".activities.AddOrder" />
         <activity android:name=".activities.ViewCustomers" />
-        <activity android:name=".activities.RegisterCustomer" />
+        <activity android:name=".activities.AddCustomer" />
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"

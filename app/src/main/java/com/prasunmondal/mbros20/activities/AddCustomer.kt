@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.prasunmondal.mbros20.models.Customer
 import com.prasunmondal.mbros20.R
 
-class RegisterCustomer : AppCompatActivity() {
+class AddCustomer : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_customer)
