@@ -1,8 +1,8 @@
 package com.prasunmondal.mbros20.models
 
 import android.content.Context
-import com.prasunmondal.mbros20.Files.IOObjectToFile
-import com.prasunmondal.mbros20.Utils.StringConstants
+import com.prasunmondal.mbros20.files.IOObjectToFile
+import com.prasunmondal.mbros20.utils.StringConstants
 import java.io.Serializable
 import java.util.ArrayList
 

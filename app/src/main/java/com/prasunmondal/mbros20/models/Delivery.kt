@@ -1,7 +1,7 @@
 package com.prasunmondal.mbros20.models
 
 import com.google.gson.reflect.TypeToken
-import com.prasunmondal.mbros20.Utils.DataParser
+import com.prasunmondal.mbros20.utils.DataParser
 import java.util.ArrayList
 
 class Delivery {
