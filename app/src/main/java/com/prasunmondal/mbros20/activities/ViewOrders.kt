@@ -1,10 +1,12 @@
 package com.prasunmondal.mbros20.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.prasunmondal.mbros20.database_calls.OrdersFetch
 import com.prasunmondal.mbros20.models.Order
 import com.prasunmondal.mbros20.R
@@ -15,13 +17,23 @@ class ViewOrders : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_orders)
+
+        val addOrderBtn = findViewById<FloatingActionButton>(R.id.view_orders_addOrderBtn)
+        addOrderBtn.setOnClickListener{
+            goToAddOrderActivity()
+        }
         OrderList.instance.getFromFile(this)
         if(OrderList.instance.list.isNotEmpty())
             showCustomerData(OrderList.instance.list)
     }
 
-    fun showCustomerData(orders: ArrayList<Order>) {
-        var view = findViewById<LinearLayout>(R.id.view_orders_viewArea);
+    private fun goToAddOrderActivity() {
+        val myIntent = Intent(this, AddOrder::class.java)
+        this.startActivity(myIntent)
+    }
+
+    private fun showCustomerData(orders: ArrayList<Order>) {
+        val view = findViewById<LinearLayout>(R.id.view_orders_viewArea)
 
         for(order in orders) {
             val orderCard = LinearLayout(this)
