@@ -39,6 +39,7 @@ class ViewOrders : AppCompatActivity() {
 
     private fun showCustomerData(orders: ArrayList<Order>) {
         val view = findViewById<LinearLayout>(R.id.view_orders_viewArea)
+        view.removeAllViews()
         for(order in orders) {
             val orderCard = LinearLayout(this)
             val text = TextView(this)
