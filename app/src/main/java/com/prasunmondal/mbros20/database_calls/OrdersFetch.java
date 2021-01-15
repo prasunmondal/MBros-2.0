@@ -1,6 +1,6 @@
-package com.prasunmondal.mbros20.DatabaseCalls;
+package com.prasunmondal.mbros20.database_calls;
 
-import com.prasunmondal.mbros20.DatabaseUtils.FetchAllFromDB;
+import com.prasunmondal.mbros20.database_utils.FetchAllFromDB;
 import com.prasunmondal.mbros20.models.Order;
 
 import java.util.ArrayList;

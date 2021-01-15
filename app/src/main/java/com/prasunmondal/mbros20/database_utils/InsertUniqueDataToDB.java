@@ -1,20 +1,19 @@
-package com.prasunmondal.mbros20.DatabaseUtils;
+package com.prasunmondal.mbros20.database_utils;
 
-import com.prasunmondal.mbros20.DatabaseCalls.DatabaseStrings;
-import com.prasunmondal.mbros20.DatabaseUtils.ExecutePostCalls;
+import com.prasunmondal.mbros20.database_calls.DatabaseStrings;
 
 import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.function.Consumer;
 
-public class InsertDataToDB
+public class InsertUniqueDataToDB
 {
     Consumer<String> onCompletion;
     JSONObject postDataParams = new JSONObject();
     URL scriptUrl;
 
-    public InsertDataToDB(String data, String tabName, Consumer<String> onCompletion) throws Exception
+    public InsertUniqueDataToDB(String data, String tabName, String uniqueCol, Consumer<String> onCompletion) throws Exception
     {
         this.onCompletion = onCompletion;
 
@@ -25,6 +24,7 @@ public class InsertDataToDB
         postDataParams.put("sheetId", sheetId);
         postDataParams.put("tabName", tabName);
         postDataParams.put("opCode", "INSERT_UNIQUE");
+        postDataParams.put("uniqueCol", uniqueCol);
     }
 
     public void execute()
@@ -34,3 +34,4 @@ public class InsertDataToDB
     }
 
 }
+

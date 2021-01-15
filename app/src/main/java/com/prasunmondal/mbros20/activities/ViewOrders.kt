@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.prasunmondal.mbros20.DatabaseCalls.OrdersFetch
+import com.prasunmondal.mbros20.database_calls.OrdersFetch
 import com.prasunmondal.mbros20.models.Order
 import com.prasunmondal.mbros20.R
 import java.util.ArrayList

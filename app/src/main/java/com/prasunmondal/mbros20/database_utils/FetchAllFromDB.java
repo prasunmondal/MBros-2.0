@@ -1,7 +1,6 @@
-package com.prasunmondal.mbros20.DatabaseUtils;
+package com.prasunmondal.mbros20.database_utils;
 
-import com.prasunmondal.mbros20.DatabaseCalls.DatabaseStrings;
-import com.prasunmondal.mbros20.DatabaseUtils.ExecutePostCalls;
+import com.prasunmondal.mbros20.database_calls.DatabaseStrings;
 
 import org.json.JSONObject;
 

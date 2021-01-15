@@ -1,7 +1,7 @@
-package com.prasunmondal.mbros20.DatabaseCalls;
+package com.prasunmondal.mbros20.database_calls;
 
-import com.prasunmondal.mbros20.DatabaseUtils.UpdateDataInDB;
-import com.prasunmondal.mbros20.Utils.StringConstants;
+import com.prasunmondal.mbros20.database_utils.UpdateDataInDB;
+import com.prasunmondal.mbros20.utils.StringConstants;
 import com.prasunmondal.mbros20.models.Delivery;
 
 import java.util.ArrayList;

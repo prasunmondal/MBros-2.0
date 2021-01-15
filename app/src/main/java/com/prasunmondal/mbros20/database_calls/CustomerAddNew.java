@@ -1,8 +1,8 @@
-package com.prasunmondal.mbros20.DatabaseCalls;
+package com.prasunmondal.mbros20.database_calls;
 
-import com.prasunmondal.mbros20.DatabaseUtils.InsertUniqueDataToDB;
+import com.prasunmondal.mbros20.database_utils.InsertUniqueDataToDB;
 import com.prasunmondal.mbros20.models.Customer;
-import com.prasunmondal.mbros20.Utils.StringConstants;
+import com.prasunmondal.mbros20.utils.StringConstants;
 
 import java.util.function.Consumer;
 

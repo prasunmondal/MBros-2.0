@@ -1,4 +1,4 @@
-package com.prasunmondal.mbros20.Utils;
+package com.prasunmondal.mbros20.utils;
 
 public class StringConstants {
 

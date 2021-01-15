@@ -1,4 +1,4 @@
-package com.prasunmondal.mbros20.DatabaseUtils
+package com.prasunmondal.mbros20.database_utils
 
 import android.os.AsyncTask
 import android.util.Log

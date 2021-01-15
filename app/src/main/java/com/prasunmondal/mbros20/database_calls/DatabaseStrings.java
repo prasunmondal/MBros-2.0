@@ -1,4 +1,4 @@
-package com.prasunmondal.mbros20.DatabaseCalls;
+package com.prasunmondal.mbros20.database_calls;
 
 public class DatabaseStrings {
     public static String TABNAME_REGISTER_CUSTOMER = "Customers";

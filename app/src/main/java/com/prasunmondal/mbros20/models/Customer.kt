@@ -1,8 +1,8 @@
 package com.prasunmondal.mbros20.models
 
 import com.google.gson.reflect.TypeToken
-import com.prasunmondal.mbros20.DatabaseCalls.CustomerAddNew
-import com.prasunmondal.mbros20.Utils.DataParser
+import com.prasunmondal.mbros20.database_calls.CustomerAddNew
+import com.prasunmondal.mbros20.utils.DataParser
 import java.io.Serializable
 import java.util.*
 
