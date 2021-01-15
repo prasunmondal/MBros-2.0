@@ -1,6 +1,7 @@
 package com.prasunmondal.mbros20.models
 
 import com.google.gson.reflect.TypeToken
+import com.prasunmondal.mbros20.activities.Denominations
 import com.prasunmondal.mbros20.utils.DataParser
 import java.util.ArrayList
 
@@ -11,7 +12,7 @@ class Delivery {
     var customerName: String
     var pcs: String
     var kilos: String
-    var pc_kilo_denominations: String
+    var pc_kilo_denominations: ArrayList<Denominations>
     var pricePerKilo: String
     var previousDue: String
     var todayPaid: String
@@ -23,7 +24,7 @@ class Delivery {
         customerName: String,
         pcs: String,
         kilos: String,
-        pc_kilo_denominations: String,
+        pc_kilo_denominations: ArrayList<Denominations>,
         pricePerKilo: String,
         previousDue: String,
         todayPaid: String
