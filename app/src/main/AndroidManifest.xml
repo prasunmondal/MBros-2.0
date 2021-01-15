@@ -14,20 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ViewOrders">
-
-        </activity>
-        <activity android:name=".activities.AddOrder">
+        <activity android:name=".activities.DeliveryDenominations">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ViewCustomers">
+        <activity android:name=".activities.ViewOrders"></activity>
+        <activity android:name=".activities.AddOrder">
         </activity>
-        <activity android:name=".activities.RegisterCustomer">
-        </activity>
+        <activity android:name=".activities.ViewCustomers"></activity>
+        <activity android:name=".activities.RegisterCustomer"></activity>
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
