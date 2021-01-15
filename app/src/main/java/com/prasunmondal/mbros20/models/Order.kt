@@ -2,9 +2,10 @@ package com.prasunmondal.mbros20.models
 
 import com.google.gson.reflect.TypeToken
 import com.prasunmondal.mbros20.utils.DataParser
+import java.io.Serializable
 import java.util.ArrayList
 
-class Order {
+class Order: Serializable {
     lateinit var orderId: String
     lateinit var customerId: String
     lateinit var customerName: String

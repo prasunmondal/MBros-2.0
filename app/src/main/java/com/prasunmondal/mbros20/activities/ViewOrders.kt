@@ -7,12 +7,18 @@ import android.widget.TextView
 import com.prasunmondal.mbros20.database_calls.OrdersFetch
 import com.prasunmondal.mbros20.models.Order
 import com.prasunmondal.mbros20.R
+import com.prasunmondal.mbros20.models.CustomerList.Companion.saveToFile
+import com.prasunmondal.mbros20.models.OrderList
+import com.prasunmondal.mbros20.session_data.SessionData
 import java.util.ArrayList
 
 class ViewOrders : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_orders)
+        OrderList.instance.getFromFile(this)
+        if(OrderList.instance.list!!.isNotEmpty())
+            showCustomerData(OrderList.instance.list)
     }
 
     fun showCustomerData(orders: ArrayList<Order>) {
@@ -25,6 +31,10 @@ class ViewOrders : AppCompatActivity() {
     }
 
     fun onClickRefreshOrdersButton(view: View) {
-        OrdersFetch.execute( { p1-> showCustomerData(p1)});
+        OrdersFetch.execute { p1 ->
+            OrderList.instance.saveToFile(this, p1)
+            showCustomerData(p1)
+        };
+
     }
 }
