@@ -1,74 +1,173 @@
 package com.prasunmondal.mbros20.activities
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.prasunmondal.mbros20.R
 
-class Denominations {
-    var pc: String
-    var kg: String
 
-    constructor(pc: String, kg: String) {
-        this.pc = pc
-        this.kg = kg
-    }
+class Denominations(var pc: String, var kg: String) {
 
     fun getPcInt(): Int {
         return pc.toInt()
     }
 
-    fun getKgInt(): Int {
-        return kg.toInt()
+    fun getKgFloat(): Float {
+        return kg.toFloat()
     }
 }
 class DeliveryDenominations : AppCompatActivity() {
-    lateinit var denominationMap: ArrayList<Denominations>
+    private lateinit var denominationMap: ArrayList<Denominations>
+    private lateinit var pcInput: EditText
+    private lateinit var kgInput: EditText
+    private lateinit var totalPc: TextView
+    private lateinit var totalKg: TextView
+    private lateinit var pcCounting: TextView
+    private lateinit var kgCounting: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delivery_denominations)
 
+        pcInput = findViewById(R.id.delivery_denomination_input_pc)
+        kgInput = findViewById(R.id.delivery_denomination_input_kg)
+        totalPc = findViewById(R.id.delivery_denomination_view_totalPc)
+        totalKg = findViewById(R.id.delivery_denomination_view_totalKg)
+        pcCounting = findViewById(R.id.delivery_denomination_view_totalPc_counting)
+        kgCounting = findViewById(R.id.delivery_denomination_view_totalKg_counting)
+
+        pcInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+                countingPcAndKg(denominationMap)
+            }
+        })
+
+        kgInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+                countingPcAndKg(denominationMap)
+            }
+        })
         denominationMap = arrayListOf()
     }
 
-    fun onClickAddToDenomination(view: View) {
-        denominationMap.add(Denominations(getPc(), getKg()))
+    fun View.onClickAddToDenomination() {
+        if(getKg().isEmpty())
+        {
+            Toast.makeText(this@DeliveryDenominations, "Enter KG", Toast.LENGTH_SHORT).show()
+            return
+        }
+        var pc = getPc()
+        if(pc.isEmpty())
+            pc = "0"
+        addDenomination(Denominations(pc, getKg()), denominationMap)
+        resetKg()
         showDenominations(denominationMap)
     }
 
     private fun showDenominations(denominations: ArrayList<Denominations>) {
         val layout = findViewById<LinearLayout>(R.id.delivery_denomination_view_container)
 
+        layout.removeAllViews()
+        val ll1 = LinearLayout(applicationContext)
+        ll1.orientation = LinearLayout.VERTICAL
         for (denomination in denominations) {
+            val pc = denomination.pc
+            val kg = denomination.kg
+            val record = LinearLayout(applicationContext)
+            record.orientation = LinearLayout.HORIZONTAL
+
             val fullLabel = TextView(applicationContext)
-            fullLabel.text = "$denomination.pc - $denomination.kg"
-            layout.addView(fullLabel)
+            val deleteButton = Button(applicationContext)
+            deleteButton.setOnClickListener {
+                setKg(kg)
+                setPc(pc)
+                removeDenomination(denominations, denomination)
+                showDenominations(denominations)
+                countingPcAndKg(denominations)
+            }
+            deleteButton.text = "Delete"
+            fullLabel.text = "$pc - $kg"
+            record.addView(fullLabel)
+            record.addView(deleteButton)
+            ll1.addView(record)
         }
+        layout.addView(ll1)
         refreshTotalPcAndKg(denominations)
     }
 
     private fun getPc(): String {
-        return findViewById<EditText>(R.id.delivery_denomination_input_pc).text.toString()
+        return pcInput.text.toString()
     }
 
     private fun getKg(): String {
-        return findViewById<EditText>(R.id.delivery_denomination_input_kg).text.toString()
+        return kgInput.text.toString()
+    }
+
+    private fun resetKg() {
+        kgInput.setText("")
+    }
+
+    private fun setKg(string: String) {
+        kgInput.setText(string)
+    }
+
+    private fun setPc(string: String) {
+        pcInput.setText(string)
+    }
+
+    fun countingPcAndKg(denominations: ArrayList<Denominations>) {
+        var pc = try {
+            pcInput.text.toString().toInt()
+        } catch (e: Exception) {
+            0
+        }
+
+        var kg = try {
+            kgInput.text.toString().toFloat()
+        } catch (e: Exception) {
+            0.0F
+        }
+
+        for (denomination in denominations) {
+            pc += denomination.pc.toInt()
+            kg += denomination.kg.toFloat()
+        }
+
+        totalPc.text = pc.toString()
+        kgCounting.text = kg.toString()
+    }
+
+    private fun addDenomination(denomination: Denominations, denominations: ArrayList<Denominations>) {
+        denominations.add(denomination)
+        countingPcAndKg(denominations)
+    }
+
+    private fun removeDenomination(denominations: ArrayList<Denominations>, denomination: Denominations) {
+        denominations.remove(denomination)
+        countingPcAndKg(denominations)
     }
 
     private fun refreshTotalPcAndKg(denominations: ArrayList<Denominations>) {
-        var totalPc = findViewById<TextView>(R.id.delivery_denomination_view_totalPc)
-        var totalKg = findViewById<TextView>(R.id.delivery_denomination_view_totalKg)
-
         var sumPc = 0
-        var sumKg = 0;
+        var sumKg = 0.0F
         for (denomination in denominations) {
-            if(denomination.pc.length != 0)
+            if(denomination.pc.isNotEmpty())
                 sumPc += denomination.getPcInt()
-            if(denomination.kg.length != 0)
-                sumKg += denomination.getKgInt()
+            if(denomination.kg.isNotEmpty())
+                sumKg += denomination.getKgFloat()
         }
         totalPc.text = sumPc.toString()
         totalKg.text = sumKg.toString()

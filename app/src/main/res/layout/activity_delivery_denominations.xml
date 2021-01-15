@@ -45,21 +45,41 @@
     <TextView
         android:id="@+id/delivery_denomination_view_totalPc"
         android:layout_width="100dp"
-        android:layout_height="64dp"
+        android:layout_height="40dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/delivery_denomination_input_pc"
         app:layout_constraintStart_toStartOf="@+id/delivery_denomination_input_pc"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/delivery_denomination_view_totalPc_counting"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/delivery_denomination_input_pc"
+        app:layout_constraintStart_toStartOf="@+id/delivery_denomination_input_pc"
+        app:layout_constraintTop_toBottomOf="@+id/delivery_denomination_view_totalPc" />
+
+    <TextView
         android:id="@+id/delivery_denomination_view_totalKg"
         android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:layout_height="0dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/delivery_denomination_view_totalPc"
         app:layout_constraintEnd_toEndOf="@+id/delivery_denomination_input_kg"
         app:layout_constraintStart_toStartOf="@+id/delivery_denomination_input_kg"
         app:layout_constraintTop_toTopOf="@+id/delivery_denomination_view_totalPc" />
+
+    <TextView
+        android:id="@+id/delivery_denomination_view_totalKg_counting"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/delivery_denomination_view_totalPc_counting"
+        app:layout_constraintEnd_toEndOf="@+id/delivery_denomination_view_totalKg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/delivery_denomination_input_kg"
+        app:layout_constraintTop_toBottomOf="@+id/delivery_denomination_view_totalPc" />
 
     <ScrollView
         android:layout_width="0dp"
