@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.models.CustomerFullDetails
 import com.prasunmondal.mbros20.models.CustomerList
-import com.prasunmondal.mbros20.models.Delivery
 import com.prasunmondal.mbros20.models.Order
 
 
@@ -29,8 +28,8 @@ class DeliveryDenominations : AppCompatActivity() {
     private lateinit var kgInput: EditText
     private lateinit var totalPc: TextView
     private lateinit var totalKg: TextView
-    private lateinit var pcCounting: TextView
-    private lateinit var kgCounting: TextView
+    private lateinit var textViewPcCounting: TextView
+    private lateinit var textViewKgCounting: TextView
     private lateinit var textViewCustomerName: TextView
     private lateinit var textViewOrderKg: TextView
 
@@ -48,8 +47,8 @@ class DeliveryDenominations : AppCompatActivity() {
         kgInput = findViewById(R.id.delivery_denomination_input_kg)
         totalPc = findViewById(R.id.delivery_denomination_view_totalPc)
         totalKg = findViewById(R.id.delivery_denomination_view_totalKg)
-        pcCounting = findViewById(R.id.delivery_denomination_view_totalPc_counting)
-        kgCounting = findViewById(R.id.delivery_denomination_view_totalKg_counting)
+        textViewPcCounting = findViewById(R.id.delivery_denomination_view_totalPc_counting)
+        textViewKgCounting = findViewById(R.id.delivery_denomination_view_totalKg_counting)
         textViewCustomerName = findViewById(R.id.delivery_denomination_view_customerName)
         textViewOrderKg = findViewById(R.id.delivery_denomination_view_orderedKG)
 
@@ -163,8 +162,8 @@ class DeliveryDenominations : AppCompatActivity() {
             kg += denomination.kg.toFloat()
         }
 
-        totalPc.text = pc.toString()
-        kgCounting.text = kg.toString()
+        textViewPcCounting.text = pc.toString()
+        textViewKgCounting.text = kg.toString()
     }
 
     private fun addDenomination(denomination: Denominations, denominations: ArrayList<Denominations>) {
