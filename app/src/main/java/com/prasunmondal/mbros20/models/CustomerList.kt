@@ -11,7 +11,8 @@ class CustomerList: Serializable {
         lateinit var list: ArrayList<Customer>
 
         fun saveToFile(context: Context) {
-            IOObjectToFile.WriteObjectToFile(context, StringConstants.FILENAME_CUSTOMER_REPO, CustomerList.list);
+            IOObjectToFile.WriteObjectToFile(context, StringConstants.FILENAME_CUSTOMER_REPO, CustomerList.list)
+            getFromFile(context)
         }
 
         fun getFromFile(context: Context): ArrayList<Customer>? {
@@ -21,6 +22,16 @@ class CustomerList: Serializable {
                 return list
             }
             return null
+        }
+
+        fun getCustomerById(id: String): Customer? {
+
+            for(customer in list) {
+                if(customer.id.equals(id, true)) {
+                    return customer
+                }
+            }
+            return null;
         }
     }
 }

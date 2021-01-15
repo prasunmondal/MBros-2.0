@@ -7,6 +7,10 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.prasunmondal.mbros20.R
+import com.prasunmondal.mbros20.models.CustomerFullDetails
+import com.prasunmondal.mbros20.models.CustomerList
+import com.prasunmondal.mbros20.models.Delivery
+import com.prasunmondal.mbros20.models.Order
 
 
 class Denominations(var pc: String, var kg: String) {
@@ -27,10 +31,18 @@ class DeliveryDenominations : AppCompatActivity() {
     private lateinit var totalKg: TextView
     private lateinit var pcCounting: TextView
     private lateinit var kgCounting: TextView
+    private lateinit var textViewCustomerName: TextView
+    private lateinit var textViewOrderKg: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delivery_denominations)
+
+        val bundle = intent.extras
+        val order: Order = bundle?.getSerializable("order") as Order
+
+        CustomerFullDetails.instance.ordered = order
+        CustomerFullDetails.instance.customer = CustomerList.getCustomerById(order.customerId)!!
 
         pcInput = findViewById(R.id.delivery_denomination_input_pc)
         kgInput = findViewById(R.id.delivery_denomination_input_kg)
@@ -38,6 +50,11 @@ class DeliveryDenominations : AppCompatActivity() {
         totalKg = findViewById(R.id.delivery_denomination_view_totalKg)
         pcCounting = findViewById(R.id.delivery_denomination_view_totalPc_counting)
         kgCounting = findViewById(R.id.delivery_denomination_view_totalKg_counting)
+        textViewCustomerName = findViewById(R.id.delivery_denomination_view_customerName)
+        textViewOrderKg = findViewById(R.id.delivery_denomination_view_orderedKG)
+
+        textViewCustomerName.text = CustomerFullDetails.instance.customer.name
+        textViewOrderKg.text = CustomerFullDetails.instance.ordered.kilos
 
         pcInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}

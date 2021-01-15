@@ -25,6 +25,15 @@ class OrderList: Serializable {
         return null
     }
 
+    fun getOrderByCustomerId(id: String): Order? {
+        for(order in instance.list) {
+            if(order.customerId.equals(id, true)) {
+                return order
+            }
+        }
+        return null
+    }
+
     companion object {
         val instance = OrderList()
     }
