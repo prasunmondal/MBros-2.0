@@ -3,9 +3,10 @@ package com.prasunmondal.mbros20.models
 import com.google.gson.reflect.TypeToken
 import com.prasunmondal.mbros20.activities.Denominations
 import com.prasunmondal.mbros20.utils.DataParser
+import java.io.Serializable
 import java.util.ArrayList
 
-class Delivery {
+class Delivery: Serializable {
     var orderId: String
     var deliveryId: String
     var customerId: String

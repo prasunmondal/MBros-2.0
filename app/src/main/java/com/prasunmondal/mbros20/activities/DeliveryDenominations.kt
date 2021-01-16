@@ -1,5 +1,6 @@
 package com.prasunmondal.mbros20.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -88,7 +89,6 @@ class DeliveryDenominations : AppCompatActivity() {
                 countingPcAndKg(deliveryObject.pc_kilo_denominations)
             }
         })
-//        denominationMap = arrayListOf()
     }
 
     fun View.onClickAddToDenomination() {
@@ -199,5 +199,17 @@ class DeliveryDenominations : AppCompatActivity() {
         }
         totalPc.text = sumPc.toString()
         totalKg.text = sumKg.toString()
+    }
+
+    fun onClickDeliveryDenominationSubmitBtn(view: View) {
+        goToBillingActivity()
+    }
+
+    private fun goToBillingActivity() {
+        val myIntent = Intent(this, BillingActivity::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("deliveryObject", deliveryObject)
+        myIntent.putExtras(bundle)
+        this.startActivity(myIntent)
     }
 }
