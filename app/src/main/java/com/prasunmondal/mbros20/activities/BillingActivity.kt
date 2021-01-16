@@ -25,7 +25,7 @@ class BillingActivity : AppCompatActivity() {
     private lateinit var editTextTodaysPayment: EditText
     private lateinit var textViewRemainingAmount: TextView
 
-    private lateinit var order: Order
+//    private lateinit var order: Order/
     private lateinit var deliveryObject: Delivery
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +54,7 @@ class BillingActivity : AppCompatActivity() {
             Log.d("Billing Activity: ", "bundle is not null")
             deliveryObject = bundle.getSerializable("deliveryObject")!! as Delivery
             Log.d("Billing Activity: ", "delivery object is not null")
-            order = OrderList.instance.getOrderByCustomerId(deliveryObject.customerId)!!
+//            order = OrderList.instance.getOrderByCustomerId(deliveryObject.customerId)!!
             prepareBillingUI()
         } else {
             Log.d("Billing Activity: ", "bundle is null")
@@ -71,7 +71,7 @@ class BillingActivity : AppCompatActivity() {
                     + deliveryObject.customerName + ", ")
 
         textViewTodaysAmount.text = Calculator.deliveryTotalPriceForTodaysDelivery(
-            deliveryObject, order).toString()
+            deliveryObject, OrderList.instance.getOrderByCustomerId(deliveryObject.customerId)!!).toString()
 
         textViewPreviousAmount.text = OrderList.instance.getOrderByCustomerId(deliveryObject.customerId)!!.previousDue
 
@@ -104,11 +104,9 @@ class BillingActivity : AppCompatActivity() {
         this.startActivity(myIntent)
     }
 
-
     private fun saveData() {
         deliveryObject.todayPaid = getPaidAmount().toInt().toString()
         deliveryObject.pcs = Calculator.deliveryTotalPc(deliveryObject).toString()
         deliveryObject.kilos = Calculator.deliveryTotalKg(deliveryObject).toString()
-
     }
 }

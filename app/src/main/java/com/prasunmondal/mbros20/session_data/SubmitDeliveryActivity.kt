@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.prasunmondal.mbros20.R
+import com.prasunmondal.mbros20.database_calls.DeliveryRecordAdd
 import com.prasunmondal.mbros20.models.CustomerList
 import com.prasunmondal.mbros20.models.Delivery
 import com.prasunmondal.mbros20.models.OrderList
@@ -33,5 +34,7 @@ class SubmitDeliveryActivity : AppCompatActivity() {
         System.out.println(deliveryObject)
         System.out.println(CustomerList.getCustomerById(deliveryObject.customerId))
         System.out.println(OrderList.instance.getOrderByCustomerId(deliveryObject.customerId))
+
+        DeliveryRecordAdd().execute(deliveryObject, {})
     }
 }
