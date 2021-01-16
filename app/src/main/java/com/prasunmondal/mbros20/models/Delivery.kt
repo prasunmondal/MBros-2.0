@@ -46,5 +46,9 @@ class Delivery {
             return DataParser.parseJSONObject(object :
                 TypeToken<ArrayList<Delivery>>() {}.type, jsonString, "records")
         }
+
+        fun getDeliveryId(order: Order): String{
+            return "del-" + order.orderId;
+        }
     }
 }

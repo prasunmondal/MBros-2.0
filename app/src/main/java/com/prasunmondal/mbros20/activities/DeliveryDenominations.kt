@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.models.CustomerFullDetails
 import com.prasunmondal.mbros20.models.CustomerList
+import com.prasunmondal.mbros20.models.Delivery
 import com.prasunmondal.mbros20.models.Order
 
 
@@ -23,7 +24,6 @@ class Denominations(var pc: String, var kg: String) {
     }
 }
 class DeliveryDenominations : AppCompatActivity() {
-    private lateinit var denominationMap: ArrayList<Denominations>
     private lateinit var pcInput: EditText
     private lateinit var kgInput: EditText
     private lateinit var totalPc: TextView
@@ -33,6 +33,7 @@ class DeliveryDenominations : AppCompatActivity() {
     private lateinit var textViewCustomerName: TextView
     private lateinit var textViewOrderKg: TextView
 
+    private lateinit var deliveryObject: Delivery
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delivery_denominations)
@@ -42,6 +43,17 @@ class DeliveryDenominations : AppCompatActivity() {
 
         CustomerFullDetails.instance.ordered = order
         CustomerFullDetails.instance.customer = CustomerList.getCustomerById(order.customerId)!!
+        deliveryObject = Delivery(order.orderId,
+            Delivery.getDeliveryId(order),
+            CustomerFullDetails.instance.customer.id,
+            CustomerFullDetails.instance.customer.name,
+            "0",
+            "0",
+            arrayListOf(),
+            order.pricePerKilo,
+            order.previousDue,
+            "0"
+        )
 
         pcInput = findViewById(R.id.delivery_denomination_input_pc)
         kgInput = findViewById(R.id.delivery_denomination_input_kg)
@@ -62,7 +74,7 @@ class DeliveryDenominations : AppCompatActivity() {
             }
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
-                countingPcAndKg(denominationMap)
+                countingPcAndKg(deliveryObject.pc_kilo_denominations)
             }
         })
 
@@ -73,10 +85,10 @@ class DeliveryDenominations : AppCompatActivity() {
             }
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
-                countingPcAndKg(denominationMap)
+                countingPcAndKg(deliveryObject.pc_kilo_denominations)
             }
         })
-        denominationMap = arrayListOf()
+//        denominationMap = arrayListOf()
     }
 
     fun View.onClickAddToDenomination() {
@@ -88,9 +100,9 @@ class DeliveryDenominations : AppCompatActivity() {
         var pc = getPc()
         if(pc.isEmpty())
             pc = "0"
-        addDenomination(Denominations(pc, getKg()), denominationMap)
+        addDenomination(Denominations(pc, getKg()), deliveryObject.pc_kilo_denominations)
         resetKg()
-        showDenominations(denominationMap)
+        showDenominations(deliveryObject.pc_kilo_denominations)
     }
 
     private fun showDenominations(denominations: ArrayList<Denominations>) {
