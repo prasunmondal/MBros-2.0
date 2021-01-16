@@ -12,10 +12,10 @@ import com.prasunmondal.mbros20.models.CustomerFullDetails
 import com.prasunmondal.mbros20.models.CustomerList
 import com.prasunmondal.mbros20.models.Delivery
 import com.prasunmondal.mbros20.models.Order
+import java.io.Serializable
 
 
-class Denominations(var pc: String, var kg: String) {
-
+class Denominations(var pc: String, var kg: String): Serializable {
     fun getPcInt(): Int {
         return pc.toInt()
     }
@@ -24,6 +24,7 @@ class Denominations(var pc: String, var kg: String) {
         return kg.toFloat()
     }
 }
+
 class DeliveryDenominations : AppCompatActivity() {
     private lateinit var pcInput: EditText
     private lateinit var kgInput: EditText

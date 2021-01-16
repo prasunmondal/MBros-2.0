@@ -43,7 +43,7 @@ class Delivery: Serializable {
     }
 
     companion object {
-        public fun parse(jsonString: String): ArrayList<Delivery> {
+        fun parse(jsonString: String): ArrayList<Delivery> {
             return DataParser.parseJSONObject(object :
                 TypeToken<ArrayList<Delivery>>() {}.type, jsonString, "records")
         }
