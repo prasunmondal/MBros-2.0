@@ -2,6 +2,8 @@ package com.prasunmondal.mbros20.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
@@ -32,6 +34,16 @@ class BillingActivity : AppCompatActivity() {
         textViewTotalAmount = findViewById(R.id.billing_totalAmount)
         editTextTodaysPayment = findViewById(R.id.billing_todaysPayment)
         textViewRemainingAmount = findViewById(R.id.billing_remainingAmount)
+
+        editTextTodaysPayment.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+                setRemainingAmount()
+            }
+        })
 
         Log.d("Billing Activity: ", "onCreate")
         val bundle = intent.extras
@@ -67,6 +79,7 @@ class BillingActivity : AppCompatActivity() {
     }
 
     private fun setRemainingAmount() {
+        Log.d("BillingActivity: ", "setRemainingAmount");
         textViewRemainingAmount.text = Calculator.deliveryRemainingAmount(deliveryObject,
             OrderList.instance.getOrderByCustomerId(deliveryObject.customerId)!!, getPaidAmount()).toString()
     }
