@@ -23,6 +23,10 @@ class Denominations(var pc: String, var kg: String): Serializable {
     fun getKgFloat(): Float {
         return kg.toFloat()
     }
+
+    override fun toString(): String {
+        return "Deno:: pc: $pc, kg: $kg"
+    }
 }
 
 class DeliveryDenominations : AppCompatActivity() {

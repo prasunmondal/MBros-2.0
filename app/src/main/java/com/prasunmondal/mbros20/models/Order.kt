@@ -40,8 +40,9 @@ class Order: Serializable {
     }
 
     override fun toString(): String {
-        return "Order ID: $orderId" +
-                "ID: $customerId" +
+        return "Order::" +
+                "\norderId: $orderId" +
+                "\ncustomerId: $customerId" +
                 "\nName: $customerName" +
                 "\nPieces: $pcs" +
                 "\nKilos: $kilos" +

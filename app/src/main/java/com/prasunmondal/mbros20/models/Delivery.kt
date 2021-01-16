@@ -42,6 +42,20 @@ class Delivery: Serializable {
         this.todayPaid = todayPaid
     }
 
+    override fun toString(): String {
+        return "Delivery:: " +
+                "\nOrder Id: $orderId" +
+                "\ndeliveryId: $deliveryId" +
+                "\ncustomerId: $customerId" +
+                "\ncustomerName: $customerName" +
+                "\npcs: $pcs" +
+                "\nkilos: $kilos" +
+                "\npc_kilo_denominations: $pc_kilo_denominations" +
+                "\npricePerKilo: $pricePerKilo" +
+                "\npreviousDue: $previousDue" +
+                "\ntodayPaid: $todayPaid"
+    }
+
     companion object {
         fun parse(jsonString: String): ArrayList<Delivery> {
             return DataParser.parseJSONObject(object :

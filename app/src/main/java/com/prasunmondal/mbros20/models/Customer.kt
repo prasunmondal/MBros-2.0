@@ -31,6 +31,15 @@ class Customer : Serializable {
         CustomerAddNew {}.execute(this)
     }
 
+    override fun toString(): String {
+        return "Customer:: " +
+                "\nid: $id" +
+                "\nname: $name" +
+                "\nphoneNumber1: $phoneNumber1" +
+                "\nphoneNumber2: $phoneNumber2" +
+                "\naddress: $address"
+    }
+
     companion object {
         public fun parse(jsonString: String): ArrayList<Customer> {
             return DataParser.parseJSONObject(object :

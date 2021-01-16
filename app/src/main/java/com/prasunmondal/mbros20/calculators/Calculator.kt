@@ -21,7 +21,7 @@ class Calculator {
             var pc = 0
 
             delivery.pc_kilo_denominations.forEach { denomination ->
-                pc += denomination.kg.toInt()
+                pc += denomination.pc.toInt()
             }
             return pc
         }

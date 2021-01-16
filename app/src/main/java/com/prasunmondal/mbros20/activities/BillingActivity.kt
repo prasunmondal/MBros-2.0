@@ -1,10 +1,12 @@
 package com.prasunmondal.mbros20.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import com.prasunmondal.mbros20.R
@@ -12,6 +14,7 @@ import com.prasunmondal.mbros20.calculators.Calculator
 import com.prasunmondal.mbros20.models.Delivery
 import com.prasunmondal.mbros20.models.Order
 import com.prasunmondal.mbros20.models.OrderList
+import com.prasunmondal.mbros20.session_data.SubmitDeliveryActivity
 import java.lang.Exception
 
 class BillingActivity : AppCompatActivity() {
@@ -79,7 +82,7 @@ class BillingActivity : AppCompatActivity() {
     }
 
     private fun setRemainingAmount() {
-        Log.d("BillingActivity: ", "setRemainingAmount");
+        Log.d("BillingActivity: ", "setRemainingAmount")
         textViewRemainingAmount.text = Calculator.deliveryRemainingAmount(deliveryObject,
             OrderList.instance.getOrderByCustomerId(deliveryObject.customerId)!!, getPaidAmount()).toString()
     }
@@ -90,5 +93,22 @@ class BillingActivity : AppCompatActivity() {
         } catch (e: Exception) {
             0.0F
         }
+    }
+
+    fun onClickBillingSubmitBtn(view: View) {
+        saveData()
+        val myIntent = Intent(this, SubmitDeliveryActivity::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("deliveryObject", deliveryObject)
+        myIntent.putExtras(bundle)
+        this.startActivity(myIntent)
+    }
+
+
+    private fun saveData() {
+        deliveryObject.todayPaid = getPaidAmount().toInt().toString()
+        deliveryObject.pcs = Calculator.deliveryTotalPc(deliveryObject).toString()
+        deliveryObject.kilos = Calculator.deliveryTotalKg(deliveryObject).toString()
+
     }
 }
