@@ -25,7 +25,7 @@ class Denominations(var pc: String, var kg: String): Serializable {
     }
 
     override fun toString(): String {
-        return "Deno:: pc: $pc, kg: $kg"
+        return "pc: $pc | kg: $kg"
     }
 }
 

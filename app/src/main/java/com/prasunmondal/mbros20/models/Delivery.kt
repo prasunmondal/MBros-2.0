@@ -57,6 +57,14 @@ class Delivery: Serializable {
                 "\ntodayPaid: $todayPaid"
     }
 
+    fun getKilosFloat(): Float {
+        return kilos.toFloat()
+    }
+
+    fun getPcInt(): Int {
+        return pcs.toInt()
+    }
+
     companion object {
         fun parse(jsonString: String): ArrayList<Delivery> {
                 return DataParser.parseJSONObject(object :

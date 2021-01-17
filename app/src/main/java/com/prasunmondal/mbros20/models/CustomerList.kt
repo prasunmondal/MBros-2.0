@@ -24,6 +24,13 @@ class CustomerList: Serializable {
             return null
         }
 
+        fun getList(context: Context): ArrayList<Customer>? {
+            if(list == null) {
+                list = getFromFile(context)!!;
+            }
+            return list;
+        }
+
         fun getCustomerById(id: String): Customer? {
 
             for(customer in list) {
