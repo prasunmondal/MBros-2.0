@@ -35,6 +35,8 @@ class SubmitDeliveryActivity : AppCompatActivity() {
         System.out.println(CustomerList.getCustomerById(deliveryObject.customerId))
         System.out.println(OrderList.instance.getOrderByCustomerId(deliveryObject.customerId))
 
-        DeliveryRecordAdd().execute(deliveryObject, {}, {})
+        DeliveryRecordAdd().execute(deliveryObject,
+                {Log.d("Delivery:", "Update record Successful")},
+                {Log.d("Delivery:", "Update record Failed")})
     }
 }

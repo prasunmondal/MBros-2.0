@@ -34,7 +34,7 @@ public class DeliveryRecordAdd
 
     private static void onComplete(String jsonString, Consumer<String> onSuccess, Consumer<String> onFailure)
     {
-        if(jsonString.equalsIgnoreCase("\"SUCCESS\"")) {
+        if(jsonString.contains("SUCCESS")) {
             onSuccess.accept(jsonString);
         } else {
             onFailure.accept(jsonString);
