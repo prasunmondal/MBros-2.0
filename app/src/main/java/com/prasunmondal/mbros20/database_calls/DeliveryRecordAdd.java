@@ -4,19 +4,18 @@ import com.prasunmondal.mbros20.database_utils.UpdateDataInDB;
 import com.prasunmondal.mbros20.utils.StringConstants;
 import com.prasunmondal.mbros20.models.Delivery;
 
-import java.util.ArrayList;
 import java.util.function.Consumer;
 
 public class DeliveryRecordAdd
 {
-    public void execute(Delivery delivery, Consumer<ArrayList<Delivery>> onCompletion) throws Exception
+    public void execute(Delivery delivery, Consumer<String> onSuccess, Consumer<String> onFailure) throws Exception
     {
         UpdateDataInDB sd = new UpdateDataInDB(
                 getStringToSave(delivery),
                 DatabaseStrings.TABNAME_DELIVERY,
                 delivery.getOrderId(),
                 0,
-                jsonString -> parseAndExecute(jsonString, onCompletion));
+                jsonString -> onComplete(jsonString, onSuccess, onFailure));
         sd.execute();
     }
 
@@ -33,9 +32,12 @@ public class DeliveryRecordAdd
                 + order.getTodayPaid();
     }
 
-    private static void parseAndExecute(String jsonString, Consumer<ArrayList<Delivery>> onCompletion)
+    private static void onComplete(String jsonString, Consumer<String> onSuccess, Consumer<String> onFailure)
     {
-        ArrayList<Delivery> delivery = Delivery.Companion.parse(jsonString);
-        onCompletion.accept(delivery);
+        if(jsonString.equalsIgnoreCase("\"SUCCESS\"")) {
+            onSuccess.accept(jsonString);
+        } else {
+            onFailure.accept(jsonString);
+        }
     }
 }

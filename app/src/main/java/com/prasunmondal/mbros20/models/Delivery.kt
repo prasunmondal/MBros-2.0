@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken
 import com.prasunmondal.mbros20.activities.Denominations
 import com.prasunmondal.mbros20.utils.DataParser
 import java.io.Serializable
+import java.lang.Exception
 import java.util.ArrayList
 
 class Delivery: Serializable {
@@ -58,8 +59,8 @@ class Delivery: Serializable {
 
     companion object {
         fun parse(jsonString: String): ArrayList<Delivery> {
-            return DataParser.parseJSONObject(object :
-                TypeToken<ArrayList<Delivery>>() {}.type, jsonString, "records")
+                return DataParser.parseJSONObject(object :
+                        TypeToken<ArrayList<Delivery>>() {}.type, jsonString, "records")
         }
 
         fun getDeliveryId(order: Order): String{
