@@ -8,8 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.prasunmondal.mbros20.R
-import com.prasunmondal.mbros20.models.CustomerFullDetails
-import com.prasunmondal.mbros20.models.CustomerList
+import com.prasunmondal.mbros20.date.DateUtils
 import com.prasunmondal.mbros20.models.Delivery
 import com.prasunmondal.mbros20.models.Order
 import java.io.Serializable
@@ -47,12 +46,14 @@ class DeliveryDenominations : AppCompatActivity() {
         val bundle = intent.extras
         val order: Order = bundle?.getSerializable("order") as Order
 
-        CustomerFullDetails.instance.ordered = order
-        CustomerFullDetails.instance.customer = CustomerList.getCustomerById(order.customerId)!!
+//        CustomerFullDetails.instance.ordered = order
+//        CustomerFullDetails.instance.customer = CustomerList.getCustomerById(order.customerId)!!
         deliveryObject = Delivery(order.orderId,
             Delivery.getDeliveryId(order),
-            CustomerFullDetails.instance.customer.id,
-            CustomerFullDetails.instance.customer.name,
+                DateUtils.getDate(),
+                DateUtils.getTime(),
+            order.customerId,
+            order.customerName,
             "0",
             "0",
             arrayListOf(),
@@ -70,8 +71,8 @@ class DeliveryDenominations : AppCompatActivity() {
         textViewCustomerName = findViewById(R.id.delivery_denomination_view_customerName)
         textViewOrderKg = findViewById(R.id.delivery_denomination_view_orderedKG)
 
-        textViewCustomerName.text = CustomerFullDetails.instance.customer.name
-        textViewOrderKg.text = CustomerFullDetails.instance.ordered.kilos
+        textViewCustomerName.text = order.customerName
+        textViewOrderKg.text = order.kilos
 
         pcInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}

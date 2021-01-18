@@ -6,7 +6,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.database_calls.OrderAdd
-import com.prasunmondal.mbros20.date.DateUtls
+import com.prasunmondal.mbros20.date.DateUtils
 import com.prasunmondal.mbros20.models.Order
 
 class AddOrder : AppCompatActivity() {
@@ -48,7 +48,7 @@ class AddOrder : AppCompatActivity() {
     }
 
     private fun getOrderId(): String {
-        return DateUtls.getDate() + "_" + getCustomerId()
+        return DateUtils.getDate() + "_" + getCustomerId()
     }
 
     private fun getCustomerId(): String {

@@ -11,8 +11,8 @@ import android.widget.EditText
 import android.widget.TextView
 import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.calculators.Calculator
+import com.prasunmondal.mbros20.date.DateUtils
 import com.prasunmondal.mbros20.models.Delivery
-import com.prasunmondal.mbros20.models.Order
 import com.prasunmondal.mbros20.models.OrderList
 import com.prasunmondal.mbros20.session_data.SubmitDeliveryActivity
 import java.lang.Exception
@@ -70,8 +70,12 @@ class BillingActivity : AppCompatActivity() {
                     + deliveryObject.todayPaid + ", "
                     + deliveryObject.customerName + ", ")
 
+        Log.d("OrderList:", OrderList.instance.toString())
+        Log.d("deliveryObject:", deliveryObject.customerId)
         textViewTodaysAmount.text = Calculator.deliveryTotalPriceForTodaysDelivery(
-            deliveryObject, OrderList.instance.getOrderByCustomerId(deliveryObject.customerId)!!).toString()
+            deliveryObject,
+                OrderList.instance.getOrderByCustomerId(
+                        deliveryObject.customerId)!!).toString()
 
         textViewPreviousAmount.text = OrderList.instance.getOrderByCustomerId(deliveryObject.customerId)!!.previousDue
 
@@ -108,5 +112,7 @@ class BillingActivity : AppCompatActivity() {
         deliveryObject.todayPaid = getPaidAmount().toInt().toString()
         deliveryObject.pcs = Calculator.deliveryTotalPc(deliveryObject).toString()
         deliveryObject.kilos = Calculator.deliveryTotalKg(deliveryObject).toString()
+        deliveryObject.deliveryDate = DateUtils.getDate()
+        deliveryObject.deliveryTime = DateUtils.getTime()
     }
 }

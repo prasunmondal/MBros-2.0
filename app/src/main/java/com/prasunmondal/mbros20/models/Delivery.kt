@@ -10,6 +10,8 @@ import java.util.ArrayList
 class Delivery: Serializable {
     var orderId: String
     var deliveryId: String
+    var deliveryDate: String
+    var deliveryTime: String
     var customerId: String
     var customerName: String
     var pcs: String
@@ -22,6 +24,8 @@ class Delivery: Serializable {
     constructor(
         orderId: String,
         deliveryId: String,
+        deliveryDate: String,
+        deliveryTime: String,
         customerId: String,
         customerName: String,
         pcs: String,
@@ -33,6 +37,8 @@ class Delivery: Serializable {
     ) {
         this.orderId = orderId
         this.deliveryId = deliveryId
+        this.deliveryDate = deliveryDate
+        this.deliveryTime = deliveryTime
         this.customerId = customerId
         this.customerName = customerName
         this.pcs = pcs
@@ -47,6 +53,8 @@ class Delivery: Serializable {
         return "Delivery:: " +
                 "\nOrder Id: $orderId" +
                 "\ndeliveryId: $deliveryId" +
+                "\ndeliveryDate: $deliveryDate" +
+                "\ndeliveryTime: $deliveryTime" +
                 "\ncustomerId: $customerId" +
                 "\ncustomerName: $customerName" +
                 "\npcs: $pcs" +
