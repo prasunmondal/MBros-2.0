@@ -9,5 +9,5 @@ public class DatabaseStrings {
     public static String SHEET_ID_DEV = "1ACBvD-3EujjRIbOdB-qPE6Y6GCY60HiR0K_-dgof2tI";
     public static String SHEET_ID_PROD = "1ACBvD-3EujjRIbOdB-qPE6Y6GCY60HiR0K_-dgof2tI";
 
-    public static String GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyZrdJ_2Qcc_FWZkk6WaFoNlt9Zje5CG3hdPVhkjwcgoWBuKJKNh52Ddg/exec";
+    public static String GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkitoT15XLJn8-20imvRBzysHWHrUDaARKQHzdw0OtiMxgrHrNEuIr/exec";
 }

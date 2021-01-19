@@ -4,12 +4,13 @@ import android.os.AsyncTask
 import android.util.Log
 import com.google.gson.GsonBuilder
 import org.json.JSONArray
-import org.json.JSONException
 import org.json.JSONObject
-import java.io.*
+import java.io.BufferedReader
+import java.io.BufferedWriter
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 import java.lang.reflect.Type
 import java.net.HttpURLConnection
-import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLEncoder
 import java.util.*
@@ -18,71 +19,48 @@ import javax.net.ssl.HttpsURLConnection
 
 
 class ExecutePostCalls(
-        var scriptUrl: URL,
-        var postDataParams: JSONObject,
-        var onCompletion: Consumer<String>
+    var scriptUrl: URL,
+    var postDataParams: JSONObject,
+    var onCompletion: Consumer<String>
 ) :
     AsyncTask<String?, Void?, String>() {
     override fun onPreExecute() {}
 
-    override fun doInBackground(vararg p0: String?): String? {
-        try {
-            val url = scriptUrl //Enter URL here
-            val httpURLConnection = url.openConnection() as HttpURLConnection
-            httpURLConnection.doOutput = true
-            httpURLConnection.requestMethod = "POST" // here you are telling that it is a POST request, which can be changed into "PUT", "GET", "DELETE" etc.
-            httpURLConnection.setRequestProperty("Content-Type", "application/json") // here you are setting the `Content-Type` for the data you are sending which is `application/json`
-            httpURLConnection.connect()
-            val jsonObject = JSONObject()
-            jsonObject.put("para_1", "arg_1")
-            val wr = DataOutputStream(httpURLConnection.outputStream)
-            wr.writeBytes(jsonObject.toString())
-            wr.flush()
-            wr.close()
-        } catch (e: MalformedURLException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        } catch (e: JSONException) {
-            e.printStackTrace()
+    override fun doInBackground(vararg p0: String?): String {
+        return try {
+            Log.e("params", postDataParams.toString())
+            val conn = scriptUrl.openConnection() as HttpURLConnection
+            conn.readTimeout = 15000
+            conn.connectTimeout = 15000
+            conn.requestMethod = "POST"
+            conn.doInput = true
+            conn.doOutput = true
+            val os = conn.outputStream
+            val writer = BufferedWriter(
+                OutputStreamWriter(os, "UTF-8")
+            )
+            writer.write(getPostDataString(postDataParams))
+            writer.flush()
+            writer.close()
+            os.close()
+            val responseCode = conn.responseCode
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                val `in` = BufferedReader(InputStreamReader(conn.inputStream))
+                val sb = StringBuffer("")
+                var line: String? = ""
+                while (`in`.readLine().also { line = it } != null) {
+                    sb.append(line)
+                    break
+                }
+                `in`.close()
+                sb.toString()
+            } else {
+                "false : $responseCode"
+            }
+        } catch (e: Exception) {
+            "Exception: " + e.message
         }
-        return null
     }
-//    override fun doInBackground(vararg p0: String?): String {
-//        return try {
-//            Log.e("params", postDataParams.toString())
-//            val conn = scriptUrl.openConnection() as HttpURLConnection
-//            conn.readTimeout = 15000
-//            conn.connectTimeout = 15000
-//            conn.requestMethod = "POST"
-//            conn.doInput = true
-//            conn.doOutput = true
-//            val os = conn.outputStream
-//            val writer = BufferedWriter(
-//                    OutputStreamWriter(os, "UTF-8")
-//            )
-//            writer.write(getPostDataString(postDataParams))
-//            writer.flush()
-//            writer.close()
-//            os.close()
-//            val responseCode = conn.responseCode
-//            if (responseCode == HttpsURLConnection.HTTP_OK) {
-//                val `in` = BufferedReader(InputStreamReader(conn.inputStream))
-//                val sb = StringBuffer("")
-//                var line: String? = ""
-//                while (`in`.readLine().also { line = it } != null) {
-//                    sb.append(line)
-//                    break
-//                }
-//                `in`.close()
-//                sb.toString()
-//            } else {
-//                "false : $responseCode"
-//            }
-//        } catch (e: Exception) {
-//            "Exception: " + e.message
-//        }
-//    }
 
     override fun onPostExecute(result: String) {
         Log.i("DBCall Result: ", result)

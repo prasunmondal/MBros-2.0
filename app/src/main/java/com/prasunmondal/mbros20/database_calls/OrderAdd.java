@@ -4,20 +4,18 @@ import com.prasunmondal.mbros20.database_utils.UpdateDataInDB;
 import com.prasunmondal.mbros20.models.Order;
 import com.prasunmondal.mbros20.utils.StringConstants;
 
-import org.json.JSONObject;
-
 import java.util.function.Consumer;
 
 public class OrderAdd
 {
-    public void execute(Order order, Consumer<String> onCompletion, String json) throws Exception
+    public void execute(Order order, Consumer<String> onCompletion) throws Exception
     {
         UpdateDataInDB sd = new UpdateDataInDB(
                 getStringToSave(order),
                 DatabaseStrings.TABNAME_ORDER,
                 order.customerId,
                 0,
-                onCompletion, json);
+                onCompletion);
         sd.execute();
     }
 

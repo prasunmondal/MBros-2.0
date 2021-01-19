@@ -13,7 +13,7 @@ public class UpdateDataInDB
     JSONObject postDataParams = new JSONObject();
     URL scriptUrl;
 
-    public UpdateDataInDB(String newValue, String tabName, String uniqueValue, int uniqueColumn, Consumer<String> onCompletion, String json2) throws Exception
+    public UpdateDataInDB(String newValue, String tabName, String uniqueValue, int uniqueColumn, Consumer<String> onCompletion) throws Exception
     {
         this.onCompletion = onCompletion;
 
@@ -25,7 +25,7 @@ public class UpdateDataInDB
         postDataParams.put("tabName", tabName);
         postDataParams.put("opCode",  "UPDATE");
         postDataParams.put("dataValue", uniqueValue);
-        postDataParams.put("dataColumn", json2);
+        postDataParams.put("dataColumn", uniqueColumn);
     }
 
     public void execute()
