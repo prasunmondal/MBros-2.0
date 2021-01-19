@@ -77,6 +77,6 @@ class AddOrder : AppCompatActivity() {
 
     fun onClickPlaceOrderButton(view: View) {
         val order = Order(getOrderId(), getCustomerId(), getCustomerName(), getPcs(), getKilos(), getPricePerKilo(), getPreviousDue())
-        OrderAdd().execute(order, {})
+        OrderAdd().execute(order, {}, null)
     }
 }
