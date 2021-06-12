@@ -3,4 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="user_role_deliver">Deliver</string>
     <string name="user_role_manage">Manage</string>
+    <string name="title_activity_loading_screen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

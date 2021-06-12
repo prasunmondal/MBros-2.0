@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 //        setSupportActionBar(toolbar)
-        setActionbarTextColor()
+//        setActionbarTextColor()
 
         val array = arrayOf(2,3,5,7)
         val otpBox = findViewById<TextView>(R.id.otpView)
