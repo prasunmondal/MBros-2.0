@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.activities.UserRoleSelect
@@ -18,6 +19,7 @@ import com.prasunmondal.mbros20.activities.UserRoleSelect
 class LoadingScreen : AppCompatActivity() {
 
     private var mProgress: ProgressBar? = null
+    private lateinit var label_loading_task: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,7 @@ class LoadingScreen : AppCompatActivity() {
 
         setContentView(R.layout.activity_loading_screen)
         mProgress = findViewById<View>(R.id.splash_screen_progress_bar) as ProgressBar
+        label_loading_task = findViewById(R.id.label_loadingTask)
         Thread {
             doWork()
             startApp()
@@ -65,18 +68,22 @@ class LoadingScreen : AppCompatActivity() {
     }
 
     private fun getDetails1() {
+        label_loading_task.text = "Fetching User Details..."
         Thread.sleep(1000)
     }
 
     private fun getDetails2() {
+        label_loading_task.text = "Fetching Customer Details..."
         Thread.sleep(1000)
     }
 
     private fun getDetails3() {
+        label_loading_task.text = "Fetching Orders..."
         Thread.sleep(1000)
     }
 
     private fun getDetails4() {
+        label_loading_task.text = "Fetching Current Status..."
         Thread.sleep(1000)
     }
 }
