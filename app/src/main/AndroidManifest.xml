@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".database_utils.LoadingScreen"
+            android:name=".activities.common.LoadingScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_loading_screen"
             android:theme="@style/AppTheme.Fullscreen">

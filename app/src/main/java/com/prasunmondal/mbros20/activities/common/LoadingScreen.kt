@@ -1,9 +1,7 @@
-package com.prasunmondal.mbros20.database_utils
+package com.prasunmondal.mbros20.activities.common
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
