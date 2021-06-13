@@ -61,7 +61,7 @@ class LoadingScreen : AppCompatActivity() {
     }
 
     private fun startApp() {
-        val intent = Intent(this, UserRoleSelect::class.java)
+        val intent = Intent(this, Dashboard::class.java)
         startActivity(intent)
     }
 
