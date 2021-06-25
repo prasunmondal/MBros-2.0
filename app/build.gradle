@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.prasunmondal.mbros20"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -45,4 +45,5 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.github.prasunmondal:lib.android.postToGSheet:2021.06.225'
+    implementation 'com.github.prasunmondal:lib.android.deviceInfo:1.0.1'
 }
