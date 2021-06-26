@@ -9,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.prasunmondal.mbros20.R
 import com.prasunmondal.lib.android.deviceinfo.Device
 import com.prasunmondal.lib.android.deviceinfo.DeviceInfo
-import com.prasunmondal.lib.android.deviceinfo.InstalledApps
 import com.prasunmondal.mbros20.models.persons.AccessStatuses
 import com.prasunmondal.mbros20.models.persons.AppAccessRoles
-import com.prasunmondal.mbros20.models.persons.delivery_man.Person
+import com.prasunmondal.mbros20.models.persons.customer.Customer
+import com.prasunmondal.mbros20.models.persons.delivery_man.AppUser
 
 
 /**
@@ -73,27 +73,24 @@ class LoadingScreen : AppCompatActivity() {
     private fun getUserDetails() {
         label_loading_task.text = "Fetching User Details..."
 
-        Person.saveDetails(Person("Prasun", AppAccessRoles.ADMIN, AccessStatuses.APP_OPEN, "ffffffff-ff77-6cd3-0000-000075b319f8"))
+        AppUser.saveDetails(AppUser("Prasun", AppAccessRoles.ADMIN, AccessStatuses.APP_OPEN, "ffffffff-ff77-6cd3-0000-000075b319f8"))
 
         DeviceInfo.setContext(applicationContext, contentResolver)
         val phoneUID = DeviceInfo.get(Device.UNIQUE_ID)
         println("Device Id: $phoneUID")
-        println("Login User Details: " + Person.getDetails(phoneUID))
-        Thread.sleep(1000)
+        println("Login User Details: " + AppUser.getDetails(phoneUID))
     }
 
     private fun getDetails2() {
         label_loading_task.text = "Fetching Customer Details..."
-        Thread.sleep(1000)
+        println("Active Customers: " + Customer.fetchActiveCustomers())
     }
 
     private fun getDetails3() {
         label_loading_task.text = "Fetching Orders..."
-        Thread.sleep(1000)
     }
 
     private fun getDetails4() {
         label_loading_task.text = "Fetching Current Status..."
-        Thread.sleep(1000)
     }
 }
