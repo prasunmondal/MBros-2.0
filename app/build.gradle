@@ -44,6 +44,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.github.prasunmondal:lib.android.postToGSheet:2021.06.225'
+    implementation 'com.github.prasunmondal:lib.android.postToGSheet:2021.07'
     implementation 'com.github.prasunmondal:lib.android.deviceInfo:1.0.1'
 }

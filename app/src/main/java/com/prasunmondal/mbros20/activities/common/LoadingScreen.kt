@@ -7,7 +7,12 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.prasunmondal.mbros20.R
-import com.prasunmondal.mbros20.activities.UserRoleSelect
+import com.prasunmondal.lib.android.deviceinfo.Device
+import com.prasunmondal.lib.android.deviceinfo.DeviceInfo
+import com.prasunmondal.lib.android.deviceinfo.InstalledApps
+import com.prasunmondal.mbros20.models.persons.AccessStatuses
+import com.prasunmondal.mbros20.models.persons.AppAccessRoles
+import com.prasunmondal.mbros20.models.persons.delivery_man.Person
 
 
 /**
@@ -43,7 +48,7 @@ class LoadingScreen : AppCompatActivity() {
         while (progress < 100) {
             progress += padding
             mProgress!!.progress = progress
-            getDetails1()
+            getUserDetails()
             progress += eachStep
             mProgress!!.progress = progress
             getDetails2()
@@ -65,8 +70,15 @@ class LoadingScreen : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun getDetails1() {
+    private fun getUserDetails() {
         label_loading_task.text = "Fetching User Details..."
+
+        Person.saveDetails(Person("Prasun", "ADMIN", "PENDING_VERIFICATION", "ffffffff-ff77-6cd3-0000-000075b319f8"))
+
+        DeviceInfo.setContext(applicationContext, contentResolver)
+        val phoneUID = DeviceInfo.get(Device.UNIQUE_ID)
+        println("Device Id: $phoneUID")
+        println("Name: " + Person.getDetails(phoneUID).name)
         Thread.sleep(1000)
     }
 
