@@ -73,12 +73,12 @@ class LoadingScreen : AppCompatActivity() {
     private fun getUserDetails() {
         label_loading_task.text = "Fetching User Details..."
 
-        Person.saveDetails(Person("Prasun", "ADMIN", "PENDING_VERIFICATION", "ffffffff-ff77-6cd3-0000-000075b319f8"))
+        Person.saveDetails(Person("Prasun", AppAccessRoles.ADMIN, AccessStatuses.APP_OPEN, "ffffffff-ff77-6cd3-0000-000075b319f8"))
 
         DeviceInfo.setContext(applicationContext, contentResolver)
         val phoneUID = DeviceInfo.get(Device.UNIQUE_ID)
         println("Device Id: $phoneUID")
-        println("Name: " + Person.getDetails(phoneUID).name)
+        println("Login User Details: " + Person.getDetails(phoneUID))
         Thread.sleep(1000)
     }
 

@@ -9,6 +9,8 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
+import com.prasunmondal.mbros20.models.persons.AccessStatuses
+import com.prasunmondal.mbros20.models.persons.AppAccessRoles
 import com.prasunmondal.postjsontosheets.clients.commons.JSONUtils
 import java.lang.reflect.Type
 import java.util.*
@@ -16,22 +18,22 @@ import java.util.*
 
 class Person {
     lateinit var name: String
-    lateinit var role: String
-    lateinit var accessStatus: String
+    lateinit var role: AppAccessRoles
+    lateinit var accessStatus: AccessStatuses
     lateinit var phoneUID: String
 
 
 
     constructor(
-        name: String, role: String,
-        accessStatus: String, phoneUID: String) {
+        name: String, role: AppAccessRoles,
+        accessStatus: AccessStatuses, phoneUID: String) {
         this.name = name
         this.role = role
         this.accessStatus = accessStatus
         this.phoneUID = phoneUID
     }
 
-    constructor(name: String, role: String, phoneUID: String) {
+    constructor(name: String, role: AppAccessRoles, phoneUID: String) {
         this.name = name
         this.role = role
         this.phoneUID = phoneUID
