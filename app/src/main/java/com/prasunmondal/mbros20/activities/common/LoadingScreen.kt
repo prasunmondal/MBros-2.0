@@ -51,7 +51,7 @@ class LoadingScreen : AppCompatActivity() {
             getUserDetails()
             progress += eachStep
             mProgress!!.progress = progress
-            getDetails2()
+            getCustomerDetails()
             progress += eachStep
             mProgress!!.progress = progress
             getDetails3()
@@ -81,9 +81,9 @@ class LoadingScreen : AppCompatActivity() {
         println("Login User Details: " + AppUser.getDetails(phoneUID))
     }
 
-    private fun getDetails2() {
+    private fun getCustomerDetails() {
         label_loading_task.text = "Fetching Customer Details..."
-        println("Active Customers: " + Customer.fetchActiveCustomers())
+        var p = Customer.fetchActiveCustomers(this)
     }
 
     private fun getDetails3() {

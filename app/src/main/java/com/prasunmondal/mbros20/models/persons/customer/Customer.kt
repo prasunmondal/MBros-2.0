@@ -1,12 +1,16 @@
 package com.prasunmondal.mbros20.models.persons.customer
 
+import android.content.Context
 import com.google.gson.reflect.TypeToken
 import com.prasunmondal.mbros20.models.persons.delivery_man.AppUser
+import com.prasunmondal.mbros20.utils.FileUtils
 import com.prasunmondal.mbros20.utils.StringConstants
 import com.prasunmondal.postjsontosheets.clients.get.Get
 import com.prasunmondal.postjsontosheets.clients.post.serializable.PostObject
+import java.io.Serializable
+import java.lang.Exception
 
-class Customer {
+class Customer: Serializable {
     lateinit var name: String
     lateinit var phoneNumber1: String
     lateinit var phoneNumber2: String
@@ -21,7 +25,7 @@ class Customer {
 
 
     companion object {
-
+        var saveInFile = "Customer"
         fun getDetails(name: String): AppUser {
             // TODO: Try to read from cache
             val call = Get.builder()
@@ -39,8 +43,18 @@ class Customer {
             return p
         }
 
-        fun fetchActiveCustomers(): List<Customer> {
-            // TODO: Try to read from cache
+        fun fetchActiveCustomers(context: Context): List<Customer> {
+            // Try to Read from cache
+            try {
+                val customerList = FileUtils.read<List<Customer>>(context, saveInFile)
+                println("Cache Hit.")
+                return customerList
+            } catch (e: Exception) {
+                println("Cache Miss.")
+            }
+
+            // Fetch from server
+            println("Fetching Data from server.")
             val call = Get.builder()
                 .scriptId(StringConstants.DB_SCRIPT_URL)
                 .sheetId(StringConstants.DB_SHEET_ID)
@@ -49,10 +63,13 @@ class Customer {
                 .build()
 
             val response = call.execute()
-            // TODO: Write to cache
-
             val type = object : TypeToken<List<Customer>>() {}.type
-            return response.getParsedList(type)
+            val customerList = response.getParsedList<Customer>(type)
+
+            println("Writing to Cache.")
+            FileUtils.write(context, saveInFile, customerList)
+
+            return customerList
         }
 
         fun saveCustomerDetails(customer: Customer) {
