@@ -19,6 +19,7 @@ import android.text.Editable
 
 import android.text.TextWatcher
 import com.prasunmondal.mbros20.Login
+import com.prasunmondal.mbros20.models.persons.AccessStatuses
 
 
 /**
@@ -69,26 +70,24 @@ class LoadingScreen : AppCompatActivity() {
         val number_of_task = 4
         val padding = 10
         val eachStep = (100 - padding - padding)/number_of_task
-//        while (loadProgress < 100) {
             loadProgress += padding
             mProgress!!.progress = loadProgress
             getUserDetails()
-            if(taskPhase == TaskPhase.REGISTRATION) {
-                goToLoginActivity()
-                finish()
-            }
             getCustomerDetails(eachStep)
             getDetails3(eachStep)
             getDetails4(eachStep)
             configureUI(taskPhase)
             loadProgress += padding
             mProgress!!.progress = loadProgress
-//        }
     }
 
-    private fun goToLoginActivity() {
+    private fun goToLoginActivity(customer: AppUser?) {
         val intent = Intent(this, Login::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("customer", customer)
+        intent.putExtras(bundle)
         startActivity(intent)
+        finish()
     }
 
     private fun initiallizeUI() {
@@ -144,9 +143,10 @@ class LoadingScreen : AppCompatActivity() {
         val phoneUID = DeviceInfo.get(Device.UNIQUE_ID)
         println("Device Id: $phoneUID")
         val appUser = AppUser.getDetails(phoneUID)
-        if(appUser == null)
+        if(appUser == null || appUser.accessStatus != AccessStatuses.ACTIVE)
         {
-            println("Device not registered.")
+            println("Login not approved.")
+            goToLoginActivity(appUser)
             taskPhase = TaskPhase.REGISTRATION
         } else {
             println("Login User Details: $appUser")

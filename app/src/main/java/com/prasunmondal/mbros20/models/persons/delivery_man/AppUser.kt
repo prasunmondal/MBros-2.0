@@ -8,9 +8,10 @@ import com.prasunmondal.mbros20.models.persons.AccessStatuses
 import com.prasunmondal.mbros20.models.persons.AppAccessRoles
 import com.prasunmondal.postjsontosheets.clients.commons.APIResponse
 import com.prasunmondal.postjsontosheets.clients.post.serializable.PostObjectResponse
+import java.io.Serializable
 
 
-class AppUser {
+class AppUser: Serializable {
     lateinit var name: String
     lateinit var role: AppAccessRoles
     lateinit var accessStatus: AccessStatuses
