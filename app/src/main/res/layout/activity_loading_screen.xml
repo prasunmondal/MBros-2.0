@@ -40,24 +40,27 @@
 
         <EditText
             android:id="@+id/loading_screen_PersonName"
-            android:layout_width="357dp"
-            android:layout_height="66dp"
+            android:layout_width="314dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
             android:ems="10"
+            android:hint="Name"
             android:inputType="textPersonName"
-            android:text="Name Please"
+            android:textColor="#B7CDCDCD"
+            android:textColorHint="#48FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/splash_screen_progress_bar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/loading_screen_save_button"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Request Access"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="16dp"
+            android:text=">"
+            app:layout_constraintBottom_toBottomOf="@+id/splash_screen_progress_bar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/splash_screen_progress_bar" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/loading_screen_PersonName"
+            app:layout_constraintTop_toTopOf="@+id/loading_screen_PersonName" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

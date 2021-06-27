@@ -3,6 +3,7 @@ package com.prasunmondal.mbros20.activities.common
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -44,6 +45,8 @@ class LoadingScreen : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setContentView(R.layout.activity_loading_screen)
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
         mProgress = findViewById<View>(R.id.splash_screen_progress_bar) as ProgressBar
         label_loading_task = findViewById(R.id.label_loadingTask)
         initiallizeUI()
@@ -51,8 +54,9 @@ class LoadingScreen : AppCompatActivity() {
 
         Thread {
             doWork()
-            startApp()
-            finish()
+            if(taskPhase == TaskPhase.LOADING_DATA)
+                startApp()
+//            finish()
         }.start()
     }
 
