@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.common.Dashboard"></activity>
+        <activity
+            android:name=".Login"
+            android:exported="true" />
+        <activity android:name=".activities.common.Dashboard" />
         <activity
             android:name=".activities.common.LoadingScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -29,7 +32,7 @@
         <activity android:name=".session_data.SubmitDeliveryActivity" />
         <activity android:name=".PrepareAppDataFetch" />
         <activity android:name=".activities.SelectActivityManager" />
-        <activity android:name=".activities.UserRoleSelect"></activity>
+        <activity android:name=".activities.UserRoleSelect" />
         <activity android:name=".activities.BillingActivity" />
         <activity android:name=".activities.DeliveryDenominations" />
         <activity android:name=".activities.ViewOrders" />

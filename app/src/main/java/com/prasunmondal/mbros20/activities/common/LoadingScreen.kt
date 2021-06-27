@@ -18,9 +18,7 @@ import com.prasunmondal.mbros20.utils.Applog
 import android.text.Editable
 
 import android.text.TextWatcher
-
-
-
+import com.prasunmondal.mbros20.Login
 
 
 /**
@@ -75,6 +73,10 @@ class LoadingScreen : AppCompatActivity() {
             loadProgress += padding
             mProgress!!.progress = loadProgress
             getUserDetails()
+            if(taskPhase == TaskPhase.REGISTRATION) {
+                goToLoginActivity()
+                finish()
+            }
             getCustomerDetails(eachStep)
             getDetails3(eachStep)
             getDetails4(eachStep)
@@ -82,6 +84,11 @@ class LoadingScreen : AppCompatActivity() {
             loadProgress += padding
             mProgress!!.progress = loadProgress
 //        }
+    }
+
+    private fun goToLoginActivity() {
+        val intent = Intent(this, Login::class.java)
+        startActivity(intent)
     }
 
     private fun initiallizeUI() {
@@ -201,6 +208,12 @@ class LoadingScreen : AppCompatActivity() {
 
     fun onClickRegisterButton(view: View) {
         var customer = AppUser(editText_name.text.toString(), DeviceInfo.get(Device.UNIQUE_ID))
-        AppUser.saveDetails(customer)
+        val response = AppUser.saveDetails(customer)
+        if(response.numberOfRecordsAdded() > 0) {
+            // Data created - wait for approval
+
+        } else {
+            // Data already exist with same name or same phoneUID
+        }
     }
 }

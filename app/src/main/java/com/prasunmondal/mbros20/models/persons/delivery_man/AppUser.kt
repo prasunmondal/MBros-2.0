@@ -6,6 +6,8 @@ import com.prasunmondal.postjsontosheets.clients.post.serializable.PostObject
 import com.google.gson.reflect.TypeToken
 import com.prasunmondal.mbros20.models.persons.AccessStatuses
 import com.prasunmondal.mbros20.models.persons.AppAccessRoles
+import com.prasunmondal.postjsontosheets.clients.commons.APIResponse
+import com.prasunmondal.postjsontosheets.clients.post.serializable.PostObjectResponse
 
 
 class AppUser {
@@ -52,7 +54,7 @@ class AppUser {
             return p[0]
         }
 
-        fun saveDetails(person: AppUser) {
+        fun saveDetails(person: AppUser): PostObjectResponse {
             val call = PostObject.builder()
                 .scriptId(StringConstants.DB_SCRIPT_URL)
                 .sheetId(StringConstants.DB_SHEET_ID)
@@ -60,7 +62,7 @@ class AppUser {
                 .dataObject(person as Object)
                 .uniqueColumn("phoneUID")
                 .build()
-            call.execute()
+            return call.execute()
         }
     }
 
