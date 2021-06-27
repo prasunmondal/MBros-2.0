@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,9 +13,7 @@ import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.models.persons.customer.Customer
 import com.prasunmondal.mbros20.models.persons.delivery_man.AppUser
 import com.prasunmondal.mbros20.utils.Applog
-import android.text.Editable
 
-import android.text.TextWatcher
 import com.prasunmondal.mbros20.Login
 import com.prasunmondal.mbros20.models.persons.AccessStatuses
 
@@ -38,7 +34,6 @@ class LoadingScreen : AppCompatActivity() {
 
     private var mProgress: ProgressBar? = null
     private lateinit var label_loading_task: TextView
-    private lateinit var text_request_access: TextView
     private var loadProgress = 0
 
 
@@ -78,10 +73,10 @@ class LoadingScreen : AppCompatActivity() {
             mProgress!!.progress = loadProgress
     }
 
-    private fun goToLoginActivity(customer: AppUser?) {
+    private fun goToLoginActivity(appUser: AppUser?) {
         val intent = Intent(this, Login::class.java)
         val bundle = Bundle()
-        bundle.putSerializable("customer", customer)
+        bundle.putSerializable("appUser", appUser)
         intent.putExtras(bundle)
         startActivity(intent)
         finish()
@@ -90,7 +85,7 @@ class LoadingScreen : AppCompatActivity() {
     private fun initiallizeUI() {
         mProgress = findViewById<View>(R.id.splash_screen_progress_bar) as ProgressBar
         label_loading_task = findViewById(R.id.label_loadingTask)
-        text_request_access = findViewById(R.id.loading_screen_label_user_not_registered)
+
     }
 
     private fun configureUI(taskPhase: TaskPhase) {
@@ -99,11 +94,9 @@ class LoadingScreen : AppCompatActivity() {
             if (taskPhase == TaskPhase.LOADING_DATA) {
                 mProgress!!.visibility = View.VISIBLE
                 label_loading_task.visibility = View.VISIBLE
-                text_request_access.visibility = View.INVISIBLE
             } else {
                 mProgress!!.visibility = View.INVISIBLE
                 label_loading_task.visibility = View.INVISIBLE
-                text_request_access.visibility = View.VISIBLE
             }
         }
     }

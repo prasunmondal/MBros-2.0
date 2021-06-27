@@ -7,6 +7,22 @@
     android:background="#F800020E"
     tools:context=".Login">
 
+    <TextView
+        android:id="@+id/loading_screen_label_user_not_registered2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="You are not registered.\nPlease request for access below."
+        android:textAlignment="center"
+        android:textColor="#5C5353"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/loading_screen_PersonName"
         android:layout_width="314dp"
@@ -27,11 +43,15 @@
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/custom_button_design"
+        android:gravity="center_horizontal|center_vertical"
         android:onClick="onClickRegisterButton"
         android:text=">"
+        android:textColor="#C9FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/splash_screen_progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/loading_screen_PersonName"
         app:layout_constraintTop_toTopOf="@+id/loading_screen_PersonName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
