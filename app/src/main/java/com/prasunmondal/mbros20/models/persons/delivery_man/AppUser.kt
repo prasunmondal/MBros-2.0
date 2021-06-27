@@ -32,7 +32,7 @@ class AppUser {
     }
 
     companion object {
-        fun getDetails(phoneUID: String): AppUser {
+        fun getDetails(phoneUID: String): AppUser? {
             // TODO: Try to read from cache
             val call = Get.builder()
                 .scriptId(StringConstants.DB_SCRIPT_URL)
@@ -45,8 +45,10 @@ class AppUser {
             // TODO: Write to cache
 
             val type = object : TypeToken<List<AppUser>>() {}.type
-            val p: AppUser = response.getParsedList<AppUser>(type)[0]
-            return p
+            val p = response.getParsedList<AppUser>(type)
+            if(p.isEmpty())
+                return null
+            return p[0]
         }
 
         fun saveDetails(person: AppUser) {
