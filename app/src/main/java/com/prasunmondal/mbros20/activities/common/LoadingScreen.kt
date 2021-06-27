@@ -77,6 +77,7 @@ class LoadingScreen : AppCompatActivity() {
             getCustomerDetails(eachStep)
             getDetails3(eachStep)
             getDetails4(eachStep)
+            configureUI(taskPhase)
             loadProgress += padding
             mProgress!!.progress = loadProgress
 //        }
@@ -135,7 +136,6 @@ class LoadingScreen : AppCompatActivity() {
         {
             println("Device not registered.")
             taskPhase = TaskPhase.REGISTRATION
-            configureUI(taskPhase)
         } else {
             println("Login User Details: $appUser")
         }
@@ -147,8 +147,12 @@ class LoadingScreen : AppCompatActivity() {
         Applog.startMethod(Throwable())
         Applog.info("TaskPhase: " + taskPhase.name, Throwable())
         label_loading_task.text = "Fetching Customer Details..."
-        if(taskPhase != TaskPhase.LOADING_DATA)
+        if(taskPhase != TaskPhase.LOADING_DATA) {
+            loadProgress += taskWeightage
+            mProgress!!.progress = loadProgress
+            Thread.sleep(10)
             return
+        }
         var p = Customer.fetchActiveCustomers(this)
         loadProgress += taskWeightage
         mProgress!!.progress = loadProgress
@@ -157,8 +161,12 @@ class LoadingScreen : AppCompatActivity() {
     private fun getDetails3(taskWeightage: Int) {
         Applog.startMethod(Throwable())
         Applog.info("TaskPhase: " + taskPhase.name, Throwable())
-        if(taskPhase != TaskPhase.LOADING_DATA)
+        if(taskPhase != TaskPhase.LOADING_DATA) {
+            loadProgress += taskWeightage
+            mProgress!!.progress = loadProgress
+            Thread.sleep(10)
             return
+        }
         label_loading_task.text = "Fetching Orders..."
         loadProgress += taskWeightage
         mProgress!!.progress = loadProgress
@@ -167,8 +175,12 @@ class LoadingScreen : AppCompatActivity() {
     private fun getDetails4(taskWeightage: Int) {
         Applog.startMethod(Throwable())
         Applog.info("TaskPhase: " + taskPhase.name, Throwable())
-            if(taskPhase != TaskPhase.LOADING_DATA)
-                return
+        if(taskPhase != TaskPhase.LOADING_DATA) {
+            loadProgress += taskWeightage
+            mProgress!!.progress = loadProgress
+            Thread.sleep(10)
+            return
+        }
         label_loading_task.text = "Fetching Current Status..."
             loadProgress += taskWeightage
             mProgress!!.progress = loadProgress
