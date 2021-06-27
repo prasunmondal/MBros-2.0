@@ -3,6 +3,8 @@ package com.prasunmondal.mbros20.activities.common
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,8 @@ import com.prasunmondal.mbros20.models.persons.AccessStatuses
 import com.prasunmondal.mbros20.models.persons.AppAccessRoles
 import com.prasunmondal.mbros20.models.persons.customer.Customer
 import com.prasunmondal.mbros20.models.persons.delivery_man.AppUser
+import com.prasunmondal.mbros20.utils.Applog
+import java.util.logging.Logger
 
 
 /**
@@ -21,8 +25,20 @@ import com.prasunmondal.mbros20.models.persons.delivery_man.AppUser
  */
 class LoadingScreen : AppCompatActivity() {
 
+    enum class TaskPhase {
+        LOADING_DATA, REGISTRATION
+    }
+
+    companion object {
+        private var taskPhase: TaskPhase = TaskPhase.LOADING_DATA
+    }
+
     private var mProgress: ProgressBar? = null
     private lateinit var label_loading_task: TextView
+    private lateinit var editText_name: EditText
+    private lateinit var btn_request_access: Button
+    var loadProgress = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +49,9 @@ class LoadingScreen : AppCompatActivity() {
         setContentView(R.layout.activity_loading_screen)
         mProgress = findViewById<View>(R.id.splash_screen_progress_bar) as ProgressBar
         label_loading_task = findViewById(R.id.label_loadingTask)
+        initiallizeUI()
+        configureUI(taskPhase)
+
         Thread {
             doWork()
             startApp()
@@ -41,28 +60,43 @@ class LoadingScreen : AppCompatActivity() {
     }
 
     private fun doWork() {
-        var progress = 0
         var number_of_task = 4;
         var padding = 10
         var eachStep = (100 - padding - padding)/number_of_task
-        while (progress < 100) {
-            progress += padding
-            mProgress!!.progress = progress
+//        while (loadProgress < 100) {
+            loadProgress += padding
+            mProgress!!.progress = loadProgress
             getUserDetails()
-            progress += eachStep
-            mProgress!!.progress = progress
-            getCustomerDetails()
-            progress += eachStep
-            mProgress!!.progress = progress
-            getDetails3()
-            progress += eachStep
-            mProgress!!.progress = progress
-            getDetails4()
-            progress += eachStep
-            mProgress!!.progress = progress
-            progress += padding
-            mProgress!!.progress = progress
-        }
+            getCustomerDetails(eachStep)
+            getDetails3(eachStep)
+            getDetails4(eachStep)
+            loadProgress += padding
+            mProgress!!.progress = loadProgress
+//        }
+    }
+
+    private fun initiallizeUI() {
+        mProgress = findViewById<View>(R.id.splash_screen_progress_bar) as ProgressBar
+        label_loading_task = findViewById<TextView>(R.id.label_loadingTask)
+        editText_name = findViewById<EditText>(R.id.loading_screen_PersonName)
+        btn_request_access = findViewById<Button>(R.id.loading_screen_save_button)
+    }
+
+    private fun configureUI(taskPhase: TaskPhase) {
+        println("Configure UI: " + taskPhase.name)
+        this@LoadingScreen.runOnUiThread(java.lang.Runnable {
+            if(taskPhase == TaskPhase.LOADING_DATA) {
+                mProgress!!.visibility = View.VISIBLE
+                label_loading_task.visibility = View.VISIBLE
+                editText_name.visibility = View.INVISIBLE
+                btn_request_access.visibility = View.INVISIBLE
+            } else {
+                mProgress!!.visibility = View.INVISIBLE
+                label_loading_task.visibility = View.INVISIBLE
+                editText_name.visibility = View.VISIBLE
+                btn_request_access.visibility = View.VISIBLE
+            }
+        })
     }
 
     private fun startApp() {
@@ -71,26 +105,56 @@ class LoadingScreen : AppCompatActivity() {
     }
 
     private fun getUserDetails() {
+        Applog.startMethod(Throwable())
+        Applog.info("TaskPhase: " + taskPhase.name, Throwable())
         label_loading_task.text = "Fetching User Details..."
 
-        AppUser.saveDetails(AppUser("Prasun", AppAccessRoles.ADMIN, AccessStatuses.APP_OPEN, "ffffffff-ff77-6cd3-0000-000075b319f8"))
+//        AppUser.saveDetails(AppUser("Prasun", AppAccessRoles.ADMIN, AccessStatuses.APP_OPEN, "ffffffff-ff77-6cd3-0000-000075b319f8"))
 
         DeviceInfo.setContext(applicationContext, contentResolver)
         val phoneUID = DeviceInfo.get(Device.UNIQUE_ID)
         println("Device Id: $phoneUID")
-        println("Login User Details: " + AppUser.getDetails(phoneUID))
+        var appUser = AppUser.getDetails(phoneUID)
+        if(appUser == null)
+        {
+            println("Device not registered.")
+            taskPhase = TaskPhase.REGISTRATION
+            configureUI(taskPhase)
+        } else {
+            println("Login User Details: " + appUser)
+        }
+        loadProgress += 20
+        mProgress!!.progress = loadProgress
     }
 
-    private fun getCustomerDetails() {
+    private fun getCustomerDetails(taskWeightage: Int) {
+        Applog.startMethod(Throwable())
+        Applog.info("TaskPhase: " + taskPhase.name, Throwable())
         label_loading_task.text = "Fetching Customer Details..."
+        if(taskPhase != TaskPhase.LOADING_DATA)
+            return
         var p = Customer.fetchActiveCustomers(this)
+        loadProgress += taskWeightage
+        mProgress!!.progress = loadProgress
     }
 
-    private fun getDetails3() {
+    private fun getDetails3(taskWeightage: Int) {
+        Applog.startMethod(Throwable())
+        Applog.info("TaskPhase: " + taskPhase.name, Throwable())
+        if(taskPhase != TaskPhase.LOADING_DATA)
+            return
         label_loading_task.text = "Fetching Orders..."
+        loadProgress += taskWeightage
+        mProgress!!.progress = loadProgress
     }
 
-    private fun getDetails4() {
+    private fun getDetails4(taskWeightage: Int) {
+        Applog.startMethod(Throwable())
+        Applog.info("TaskPhase: " + taskPhase.name, Throwable())
+            if(taskPhase != TaskPhase.LOADING_DATA)
+                return
         label_loading_task.text = "Fetching Current Status..."
+            loadProgress += taskWeightage
+            mProgress!!.progress = loadProgress
     }
 }
