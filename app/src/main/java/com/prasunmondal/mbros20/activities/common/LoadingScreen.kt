@@ -34,7 +34,7 @@ class LoadingScreen : AppCompatActivity() {
     private lateinit var label_loading_task: TextView
     private lateinit var editText_name: EditText
     private lateinit var btn_request_access: Button
-    var loadProgress = 0
+    private var loadProgress = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,8 +81,8 @@ class LoadingScreen : AppCompatActivity() {
 
     private fun configureUI(taskPhase: TaskPhase) {
         println("Configure UI: " + taskPhase.name)
-        this@LoadingScreen.runOnUiThread(java.lang.Runnable {
-            if(taskPhase == TaskPhase.LOADING_DATA) {
+        this@LoadingScreen.runOnUiThread {
+            if (taskPhase == TaskPhase.LOADING_DATA) {
                 mProgress!!.visibility = View.VISIBLE
                 label_loading_task.visibility = View.VISIBLE
                 editText_name.visibility = View.INVISIBLE
@@ -93,7 +93,7 @@ class LoadingScreen : AppCompatActivity() {
                 editText_name.visibility = View.VISIBLE
                 btn_request_access.visibility = View.VISIBLE
             }
-        })
+        }
     }
 
     private fun startApp() {
@@ -111,7 +111,7 @@ class LoadingScreen : AppCompatActivity() {
         DeviceInfo.setContext(applicationContext, contentResolver)
         val phoneUID = DeviceInfo.get(Device.UNIQUE_ID)
         println("Device Id: $phoneUID")
-        var appUser = AppUser.getDetails(phoneUID)
+        val appUser = AppUser.getDetails(phoneUID)
         if(appUser == null)
         {
             println("Device not registered.")
