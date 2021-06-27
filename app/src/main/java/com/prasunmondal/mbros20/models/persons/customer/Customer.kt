@@ -11,10 +11,10 @@ import java.io.Serializable
 import java.lang.Exception
 
 class Customer: Serializable {
-    var name: String
-    var phoneNumber1: String
-    var phoneNumber2: String
-    var email: String
+    lateinit var name: String
+    lateinit var phoneNumber1: String
+    lateinit var phoneNumber2: String
+    lateinit var email: String
 
     constructor(name: String, phoneNumber1: String = "", phoneNumber2: String = "", email: String = "") {
         this.name = name
@@ -23,8 +23,9 @@ class Customer: Serializable {
         this.email = email
     }
 
+
     companion object {
-        var saveInFile = "MBros20.Customer"
+        var saveInFile = "Customer"
         fun getDetails(name: String): AppUser {
             // TODO: Try to read from cache
             val call = Get.builder()
