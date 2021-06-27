@@ -3,6 +3,7 @@ package com.prasunmondal.mbros20.models.persons.customer
 import android.content.Context
 import com.google.gson.reflect.TypeToken
 import com.prasunmondal.mbros20.models.persons.delivery_man.AppUser
+import com.prasunmondal.mbros20.utils.Applog
 import com.prasunmondal.mbros20.utils.FileUtils
 import com.prasunmondal.mbros20.utils.StringConstants
 import com.prasunmondal.postjsontosheets.clients.get.Get
@@ -73,14 +74,17 @@ class Customer: Serializable {
         }
 
         fun saveCustomerDetails(customer: Customer) {
+            Applog.info("About to save: " + customer, Throwable())
             val call = PostObject.builder()
                 .scriptId(StringConstants.DB_SCRIPT_URL)
                 .sheetId(StringConstants.DB_SHEET_ID)
                 .tabName(StringConstants.DB_TABNAME_CUSTOMER)
                 .dataObject(customer as Object)
                 .uniqueColumn("name")
+                .uniqueColumn("phoneUID")
                 .build()
-            call.execute()
+            val response = call.execute()
+            Applog.info("Data Saved: " + response.getRawResponse(), Throwable())
         }
     }
 

@@ -25,9 +25,10 @@ class AppUser {
         this.phoneUID = phoneUID
     }
 
-    constructor(name: String, role: AppAccessRoles, phoneUID: String) {
+    constructor(name: String, phoneUID: String) {
         this.name = name
-        this.role = role
+        this.role = AppAccessRoles.NONE
+        this.accessStatus = AccessStatuses.APP_OPEN
         this.phoneUID = phoneUID
     }
 
