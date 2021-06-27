@@ -4,6 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F800020E"
     tools:context=".Login">
 
+    <EditText
+        android:id="@+id/loading_screen_PersonName"
+        android:layout_width="314dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textColor="#B7CDCDCD"
+        android:textColorHint="#48FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/loading_screen_save_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/custom_button_design"
+        android:onClick="onClickRegisterButton"
+        android:text=">"
+        app:layout_constraintBottom_toBottomOf="@+id/splash_screen_progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/loading_screen_PersonName"
+        app:layout_constraintTop_toTopOf="@+id/loading_screen_PersonName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

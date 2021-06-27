@@ -38,8 +38,6 @@ class LoadingScreen : AppCompatActivity() {
 
     private var mProgress: ProgressBar? = null
     private lateinit var label_loading_task: TextView
-    private lateinit var editText_name: EditText
-    private lateinit var btn_request_access: Button
     private lateinit var text_request_access: TextView
     private var loadProgress = 0
 
@@ -62,7 +60,6 @@ class LoadingScreen : AppCompatActivity() {
             doWork()
             if(taskPhase == TaskPhase.LOADING_DATA)
                 startApp()
-//            finish()
         }.start()
     }
 
@@ -93,19 +90,7 @@ class LoadingScreen : AppCompatActivity() {
     private fun initiallizeUI() {
         mProgress = findViewById<View>(R.id.splash_screen_progress_bar) as ProgressBar
         label_loading_task = findViewById(R.id.label_loadingTask)
-        editText_name = findViewById(R.id.loading_screen_PersonName)
-        btn_request_access = findViewById(R.id.loading_screen_save_button)
         text_request_access = findViewById(R.id.loading_screen_label_user_not_registered)
-
-        onChangeNameText()
-        editText_name.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {}
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                onChangeNameText()
-            }
-        })
     }
 
     private fun configureUI(taskPhase: TaskPhase) {
@@ -114,14 +99,10 @@ class LoadingScreen : AppCompatActivity() {
             if (taskPhase == TaskPhase.LOADING_DATA) {
                 mProgress!!.visibility = View.VISIBLE
                 label_loading_task.visibility = View.VISIBLE
-                editText_name.visibility = View.INVISIBLE
-                btn_request_access.visibility = View.INVISIBLE
                 text_request_access.visibility = View.INVISIBLE
             } else {
                 mProgress!!.visibility = View.INVISIBLE
                 label_loading_task.visibility = View.INVISIBLE
-                editText_name.visibility = View.VISIBLE
-                btn_request_access.visibility = View.VISIBLE
                 text_request_access.visibility = View.VISIBLE
             }
         }
@@ -198,22 +179,5 @@ class LoadingScreen : AppCompatActivity() {
             mProgress!!.progress = loadProgress
     }
 
-    fun onChangeNameText() {
-        if(editText_name.text.isEmpty()) {
-            btn_request_access.setEnabled(false)
-        } else {
-            btn_request_access.setEnabled(true)
-        }
-    }
 
-    fun onClickRegisterButton(view: View) {
-        var customer = AppUser(editText_name.text.toString(), DeviceInfo.get(Device.UNIQUE_ID))
-        val response = AppUser.saveDetails(customer)
-        if(response.numberOfRecordsAdded() > 0) {
-            // Data created - wait for approval
-
-        } else {
-            // Data already exist with same name or same phoneUID
-        }
-    }
 }
