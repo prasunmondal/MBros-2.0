@@ -1,15 +1,16 @@
 package com.prasunmondal.mbros20
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import com.prasunmondal.lib.android.deviceinfo.Device
 import com.prasunmondal.lib.android.deviceinfo.DeviceInfo
+import com.prasunmondal.mbros20.activities.common.Dashboard
+import com.prasunmondal.mbros20.activities.common.GoogleSignInActivity
 import com.prasunmondal.mbros20.models.persons.AccessStatuses
 import com.prasunmondal.mbros20.models.persons.delivery_man.AppUser
 
@@ -23,9 +24,9 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         initiallizeUI()
-
+        hideLoadingPanel()
         val appUser = fetchReceivedData()
-        if(appUser == null) {
+        if (appUser == null) {
             // no entry found
             setUINoEntryFound()
         } else if (appUser.accessStatus != AccessStatuses.ACTIVE) {
@@ -50,7 +51,8 @@ class Login : AppCompatActivity() {
     }
 
     private fun goToNextPage() {
-
+        val intent = Intent(this, GoogleSignInActivity::class.java)
+        startActivity(intent)
     }
 
     private fun fetchReceivedData(): AppUser? {
@@ -77,8 +79,10 @@ class Login : AppCompatActivity() {
     }
 
     fun onClickRegisterButton(view: View) {
+        showLoadingPanel()
         var customer = AppUser(editText_name.text.toString(), DeviceInfo.get(Device.UNIQUE_ID))
         val response = AppUser.saveDetails(customer)
+        hideLoadingPanel()
         if(response.numberOfRecordsAdded() > 0) {
             // Data created - wait for approval
             setUIWaitingForApproval()
@@ -91,5 +95,13 @@ class Login : AppCompatActivity() {
         } else {
             btn_request_access.setEnabled(true)
         }
+    }
+
+    fun showLoadingPanel() {
+        findViewById<ProgressBar>(R.id.progressBar).visibility = View.VISIBLE
+    }
+
+    fun hideLoadingPanel() {
+        findViewById<ProgressBar>(R.id.progressBar).visibility = View.INVISIBLE
     }
 }

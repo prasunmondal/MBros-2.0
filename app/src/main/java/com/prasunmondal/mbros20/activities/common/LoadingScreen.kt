@@ -46,6 +46,8 @@ class LoadingScreen : AppCompatActivity() {
         setContentView(R.layout.activity_loading_screen)
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+
+        goToNextPage()
         mProgress = findViewById<View>(R.id.splash_screen_progress_bar) as ProgressBar
         label_loading_task = findViewById(R.id.label_loadingTask)
         initiallizeUI()
@@ -99,6 +101,12 @@ class LoadingScreen : AppCompatActivity() {
                 label_loading_task.visibility = View.INVISIBLE
             }
         }
+    }
+
+    private fun goToNextPage() {
+        val intent = Intent(this, GoogleSignInActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun startApp() {
