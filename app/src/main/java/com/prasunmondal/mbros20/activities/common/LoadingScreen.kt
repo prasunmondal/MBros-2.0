@@ -15,6 +15,12 @@ import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.models.persons.customer.Customer
 import com.prasunmondal.mbros20.models.persons.delivery_man.AppUser
 import com.prasunmondal.mbros20.utils.Applog
+import android.text.Editable
+
+import android.text.TextWatcher
+
+
+
 
 
 /**
@@ -81,6 +87,15 @@ class LoadingScreen : AppCompatActivity() {
         label_loading_task = findViewById(R.id.label_loadingTask)
         editText_name = findViewById(R.id.loading_screen_PersonName)
         btn_request_access = findViewById(R.id.loading_screen_save_button)
+        onChangeNameText()
+        editText_name.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                onChangeNameText()
+            }
+        })
     }
 
     private fun configureUI(taskPhase: TaskPhase) {
@@ -157,5 +172,13 @@ class LoadingScreen : AppCompatActivity() {
         label_loading_task.text = "Fetching Current Status..."
             loadProgress += taskWeightage
             mProgress!!.progress = loadProgress
+    }
+
+    fun onChangeNameText() {
+        if(editText_name.text.isEmpty()) {
+            btn_request_access.setEnabled(false)
+        } else {
+            btn_request_access.setEnabled(true)
+        }
     }
 }
