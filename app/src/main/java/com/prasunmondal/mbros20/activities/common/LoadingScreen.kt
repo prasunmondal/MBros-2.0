@@ -8,15 +8,12 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.prasunmondal.mbros20.R
 import com.prasunmondal.lib.android.deviceinfo.Device
 import com.prasunmondal.lib.android.deviceinfo.DeviceInfo
-import com.prasunmondal.mbros20.models.persons.AccessStatuses
-import com.prasunmondal.mbros20.models.persons.AppAccessRoles
+import com.prasunmondal.mbros20.R
 import com.prasunmondal.mbros20.models.persons.customer.Customer
 import com.prasunmondal.mbros20.models.persons.delivery_man.AppUser
 import com.prasunmondal.mbros20.utils.Applog
-import java.util.logging.Logger
 
 
 /**
@@ -60,9 +57,9 @@ class LoadingScreen : AppCompatActivity() {
     }
 
     private fun doWork() {
-        var number_of_task = 4;
-        var padding = 10
-        var eachStep = (100 - padding - padding)/number_of_task
+        val number_of_task = 4
+        val padding = 10
+        val eachStep = (100 - padding - padding)/number_of_task
 //        while (loadProgress < 100) {
             loadProgress += padding
             mProgress!!.progress = loadProgress
@@ -77,9 +74,9 @@ class LoadingScreen : AppCompatActivity() {
 
     private fun initiallizeUI() {
         mProgress = findViewById<View>(R.id.splash_screen_progress_bar) as ProgressBar
-        label_loading_task = findViewById<TextView>(R.id.label_loadingTask)
-        editText_name = findViewById<EditText>(R.id.loading_screen_PersonName)
-        btn_request_access = findViewById<Button>(R.id.loading_screen_save_button)
+        label_loading_task = findViewById(R.id.label_loadingTask)
+        editText_name = findViewById(R.id.loading_screen_PersonName)
+        btn_request_access = findViewById(R.id.loading_screen_save_button)
     }
 
     private fun configureUI(taskPhase: TaskPhase) {
@@ -121,7 +118,7 @@ class LoadingScreen : AppCompatActivity() {
             taskPhase = TaskPhase.REGISTRATION
             configureUI(taskPhase)
         } else {
-            println("Login User Details: " + appUser)
+            println("Login User Details: $appUser")
         }
         loadProgress += 20
         mProgress!!.progress = loadProgress
